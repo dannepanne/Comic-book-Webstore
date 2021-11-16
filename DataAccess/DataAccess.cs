@@ -1,10 +1,13 @@
 ﻿using DataSource;
 using DataSource.Model;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 
 namespace DataAccess
 {
@@ -22,13 +25,26 @@ namespace DataAccess
             _dataSource = dataSource;
         }
 
-        public void AccessProducts()
+        public List<ProductDTO> GetListProd()
+        {
+            List<ProductDTO> prodlist = _dataSource.GetAllProducts().ToList(); ;
+            return prodlist;
+        }
+
+        public void AccessProducts() //onödig??
         {
             Products = (List<ProductDTO>)_dataSource.GetAllProducts();
 
         }
 
-        public void AccessCustomers()
+        public List<CustomerDTO> GetListCust()
+        {
+            List<CustomerDTO> custlist = _dataSource.GetAllCustomers().ToList(); ;
+            return custlist;
+        }
+
+
+        public void AccessCustomers() //onödig?
         {
             Customers = (List<CustomerDTO>)_dataSource.GetAllCustomers();
         }
@@ -44,7 +60,18 @@ namespace DataAccess
             ProductDTO result = (ProductDTO)Products.Where(s => s.ProductID == idwhere);
 
             return result;
+
         }
+
+        public IEnumerable<ProductDTO> GetAllProducts()
+        {
+            var jsonResponse = _dataSource.ProductsDataProvider();
+            IEnumerable<ProductDTO> products = JsonConvert.DeserializeObject<IEnumerable<ProductDTO>>(jsonResponse);
+            
+            return products;
+        }
+
+
 
     }
 }

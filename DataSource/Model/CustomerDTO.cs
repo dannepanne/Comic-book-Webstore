@@ -13,9 +13,12 @@ namespace DataSource.Model
         public string FirstName { get; set; }
         [JsonPropertyName("lastname")]
         public string LastName { get; set; }
-        [JsonPropertyName("id")]
+        [JsonPropertyName("customerid")]
         public int CustomerID { get; set; }
 
         List<Reciept> Reciepts { get; set; }
+
+        CreditCard cCard = new CreditCard() { };
+        
     }
 }

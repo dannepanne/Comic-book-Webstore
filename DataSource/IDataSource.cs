@@ -1,13 +1,18 @@
-﻿using System.Collections;
+﻿using DataSource.Model;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace DataSource
 {
     public interface IDataSource
     {
 
-        public IEnumerable GetAllProducts();
+        public IEnumerable<ProductDTO> GetAllProducts();
 
-        public IEnumerable GetAllCustomers();
+        public IEnumerable<CustomerDTO> GetAllCustomers();
+
+        public string CustomersDataProvider();
+        public string ProductsDataProvider();
 
     }
 }

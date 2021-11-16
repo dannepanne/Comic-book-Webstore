@@ -1,0 +1,26 @@
+﻿@page
+@model ComicWebstoreExa.Pages.LoginModel
+@{
+    <div>
+
+        <h3>  Choose Customer:  </h3>
+
+    </div>
+
+
+    @foreach (var item in Model.Customers)
+    {
+        <div class="card text-center">
+            <div class="card-header">
+                @item.FirstName @item.LastName
+            </div>
+            <div class="card-body">
+
+
+                <a href="#" class="btn btn-primary">Log in @item.FirstName</a>
+                <p class="card-text"></p>
+            </div>
+            
+        </div>
+    }
+}

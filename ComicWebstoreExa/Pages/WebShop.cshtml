@@ -1,0 +1,22 @@
+﻿@page
+@model ComicWebstoreExa.Pages.WebShopModel
+@{
+}
+
+
+
+@foreach (var item in Model.Products)
+{
+
+<div class="card" style="width: 25rem;">
+    <div class="card-body">
+        <img class="card-img-top" src="@item.ProductImage" alt="Card image cap">
+        <h5 class="card-title">@item.ProductName</h5>
+        <h6 class="card-subtitle mb-2 text-muted">@item.ProductPrice:-</h6>
+        <p class="card-text">@item.ProductDescription</p>
+        <a href="#" class="card-link">Add to cart</a>
+        <a href="#" class="card-link">Buy</a>
+    </div>
+</div>
+
+}

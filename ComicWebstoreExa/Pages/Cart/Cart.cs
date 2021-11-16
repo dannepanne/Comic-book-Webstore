@@ -1,12 +1,12 @@
-﻿using System;
+﻿using DataSource.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace DataSource.Model
+namespace ComicWebstoreExa.Pages.Cart
 {
-    class Cart
+    public class Cart
     {
         public List<ProductDTO> ProductsInCart { get; set; }
         public int CartID { get; set; }

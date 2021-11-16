@@ -1,0 +1,83 @@
+[
+  {
+    "prodname": "Akira",
+    "prodprice": 980,
+    "prodimage": "",
+    "prodid": "0001",
+    "proddesc": "",
+    "prodtype": "Physical"
+  },
+  {
+    "prodname": "Amazing Spider-Man",
+    "prodprice": 50,
+    "prodimage": "",
+    "prodid": "0002",
+    "proddesc": "",
+    "prodtype": "Physical"
+  },
+  {
+    "prodname": "Groo",
+    "prodprice": 40,
+    "prodimage": "",
+    "prodid": "0003",
+    "proddesc": "",
+    "prodtype": "Physical"
+  },
+  {
+    "prodname": "Spawn",
+    "prodprice": 300,
+    "prodimage": "",
+    "prodid": "0004",
+    "proddesc": "",
+    "prodtype": "Physical"
+  },
+  {
+    "prodname": "Piranha Club",
+    "prodprice": 250,
+    "prodimage": "",
+    "prodid": "0005",
+    "proddesc": "",
+    "prodtype": "Physical"
+  },
+  {
+    "prodname": "Calvin & Hobbes",
+    "prodprice": 900,
+    "prodimage": "",
+    "prodid": "0006",
+    "proddesc": "",
+    "prodtype": "Digital"
+  },
+  {
+    "prodname": "Far Side",
+    "prodprice": 1300,
+    "prodimage": "",
+    "prodid": "0007",
+    "proddesc": "",
+    "prodtype": "Digital"
+  },
+  {
+    "prodname": "Prophet",
+    "prodprice": 1500,
+    "prodimage": "",
+    "prodid": "0008",
+    "proddesc": "",
+    "prodtype": "Physical"
+  },
+  {
+    "prodname": "Nausicaa",
+    "prodprice": 450,
+    "prodimage": "",
+    "prodid": "0009",
+    "proddesc": "",
+    "prodtype": "Physical"
+  },
+  {
+    "prodname": "Batman",
+    "prodprice": 200,
+    "prodimage": "",
+    "prodid": "0010",
+    "proddesc": "",
+    "prodtype": "Digital"
+  }
+
+]

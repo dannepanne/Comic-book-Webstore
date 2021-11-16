@@ -1,0 +1,38 @@
+[
+  {
+    "firstname": "Todd",
+    "lastname": "McFarlane",
+    "id": 100
+
+  },
+  {
+    "firstname": "Gary",
+    "lastname": "Larson",
+    "id": 101
+
+  },
+  {
+    "firstname": "Bill",
+    "lastname": "Watterson",
+    "id": 102
+
+  },
+  {
+    "firstname": "Stan",
+    "lastname": "Lee",
+    "id": 103
+
+  },
+  {
+    "firstname": "Katsuhiro",
+    "lastname": "Otomo",
+    "id": 104
+
+  },
+  {
+    "firstname": "Sergio",
+    "lastname": "Argones",
+    "id": 105
+
+  }
+]

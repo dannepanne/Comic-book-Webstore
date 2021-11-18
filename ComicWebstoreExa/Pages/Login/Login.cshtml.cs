@@ -7,17 +7,20 @@ using DataSource.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace ComicWebstoreExa.Pages
+namespace ComicWebstoreExa.Pages.Login
 {
     public class LoginModel : PageModel
     {
+        [BindProperty]
+        public int CustomerID { get; set; }
+
         public IDataAccess _dataAccess { get; private set; }
 
         public LoginModel(IDataAccess dataAccess)
         {
             _dataAccess = dataAccess;
         }
-        
+
 
         public List<CustomerDTO> Customers = new List<CustomerDTO>();
 
@@ -25,5 +28,19 @@ namespace ComicWebstoreExa.Pages
         {
             Customers = _dataAccess.GetListCust();
         }
+
+        public IActionResult OnPostLogin()
+        {
+            if (ModelState.IsValid)
+            {
+
+
+                Cart.Cart newCart = new Cart.Cart() { CustCartID = CustomerID };
+                return RedirectToPage("/WebShop/WebShop", "WebShop", new { CustomerID, newCart });
+            }
+
+            return Page();
+        }
+       
     }
 }

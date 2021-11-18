@@ -2,7 +2,7 @@
   {
     "productname": "Akira",
     "productprice": 980,
-    "productimage": "IMAGE",
+    "productimage": "https://upload.wikimedia.org/wikipedia/en/7/70/Akira_Volume_1_Cover_Japanese_Version_%28Manga%29.jpg",
     "productid": 1001,
     "productdescription": "DESCRIPTION",
     "producttype": "Physical"
@@ -10,7 +10,7 @@
   {
     "productname": "Amazing Spider-Man",
     "productprice": 50,
-    "productimage": "IMAGE",
+    "productimage": "https://upload.wikimedia.org/wikipedia/en/5/54/AmazingSpider-Man1.jpg",
     "productid": 1002,
     "productdescription": "DESCRIPTION",
     "producttype": "Physical"
@@ -18,7 +18,7 @@
   {
     "productname": "Groo",
     "productprice": 40,
-    "productimage": "IMAGE",
+    "productimage": "https://upload.wikimedia.org/wikipedia/en/d/d5/Groo_cover_issue1.jpg",
     "productid": 1003,
     "productdescription": "DESCRIPTION",
     "producttype": "Physical"
@@ -26,7 +26,7 @@
   {
     "productname": "Spawn",
     "productprice": 300,
-    "productimage": "IMAGE",
+    "productimage": "https://upload.wikimedia.org/wikipedia/en/a/ab/Spawn14myths1993.png",
     "productid": 1004,
     "productdescription": "DESCRIPTION",
     "producttype": "Physical"
@@ -34,7 +34,7 @@
   {
     "productname": "Piranha Club",
     "productprice": 250,
-    "productimage": "IMAGE",
+    "productimage": "https://budgrace.com/wp-content/uploads/2021/11/Front-cover-03-04-05b-1.jpg",
     "productid": 1005,
     "productdescription": "DESCRIPTION",
     "producttype": "Physical"
@@ -42,7 +42,7 @@
   {
     "productname": "Calvin & Hobbes",
     "productprice": 700,
-    "productimage": "IMAGE",
+    "productimage": "https://upload.wikimedia.org/wikipedia/en/b/b2/Calvin_and_Hobbes_Original.png",
     "productid": 1006,
     "productdescription": "DESCRIPTION",
     "producttype": "Digital"
@@ -50,7 +50,7 @@
   {
     "productname": "Far Side",
     "productprice": 1300,
-    "productimage": "IMAGE",
+    "productimage": "https://upload.wikimedia.org/wikipedia/en/5/50/Wdogart.jpg",
     "productid": 1007,
     "productdescription": "DESCRIPTION",
     "producttype": "Digital"
@@ -58,7 +58,7 @@
   {
     "productname": "Nausicaa",
     "productprice": 650,
-    "productimage": "IMAGE",
+    "productimage": "https://upload.wikimedia.org/wikipedia/en/c/c3/NausicaaCoverTankobon1.png",
     "productid": 1008,
     "productdescription": "DESCRIPTION",
     "producttype": "Physical"
@@ -66,7 +66,7 @@
   {
     "productname": "Batman",
     "productprice": 5200,
-    "productimage": "IMAGE",
+    "productimage": "https://upload.wikimedia.org/wikipedia/commons/b/b9/Batman_Comic_Book_-_NARA_-_595420.gif",
     "productid": 1009,
     "productdescription": "DESCRIPTION",
     "producttype": "Digital"
@@ -74,7 +74,7 @@
   {
     "productname": "Prophet",
     "productprice": 1500,
-    "productimage": "IMAGE",
+    "productimage": "https://upload.wikimedia.org/wikipedia/en/0/00/Prophet_21.jpeg",
     "productid": 1010,
     "productdescription": "DESCRIPTION",
     "producttype": "Physical"

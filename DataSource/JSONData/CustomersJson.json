@@ -3,37 +3,38 @@
     "firstname": "Todd",
     "lastname": "McFarlane",
     "customerid": 100
-
+    "password": "spawn"
+    
   },
   {
     "firstname": "Gary",
     "lastname": "Larson",
-    "customerid": 101
-      
+    "customerid": 101,
+    "password": "farside"
 
   },
   {
     "firstname": "Bill",
     "lastname": "Watterson",
-    "customerid": 102
-
+    "customerid": 102,
+    "password": "calvinhobbes"
   },
   {
     "firstname": "Stan",
     "lastname": "Lee",
-    "customerid": 103
-
+    "customerid": 103,
+    "password": "spiderman"
   },
   {
     "firstname": "Katsuhiro",
     "lastname": "Otomo",
-    "customerid": 104
-
+    "customerid": 104,
+    "password": "akira"
   },
   {
     "firstname": "Sergio",
     "lastname": "Argones",
-    "customerid": 105
-
+    "customerid": 105,
+    "password": "groo"
   }
 ]

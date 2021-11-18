@@ -12,5 +12,7 @@ namespace DataAccess
         public List<CustomerDTO> GetListCust();
         public List<ProductDTO> GetListProd();
         public IEnumerable<ProductDTO> GetAllProducts();
+
+        
     }
 }

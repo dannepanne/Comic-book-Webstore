@@ -1,0 +1,24 @@
+﻿@page
+@model ComicWebstoreExa.Pages.WebShop.WebShopModel
+@{
+}
+<<div class="d-flex justify-content-center row" >
+    @foreach (var item in Model.Products)
+    {
+
+        <div class="card" style="width: 300px !important;">
+
+            <img class="card-img-top" src="@item.ProductImage" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">@item.ProductName</h5>
+                <h6 class="card-title">@item.ProductPrice:-</h6>
+                <p class="card-text">@item.ProductDescription</p>
+                <a href="#" class="card-link">Add to cart</a>
+                <a asp-page="/Movie" asp-route-movieId="@item.ProductID" class="btn btn-primary">More</a>
+            </div>
+        </div>
+
+
+
+    }
+</div>

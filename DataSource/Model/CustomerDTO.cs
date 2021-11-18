@@ -16,9 +16,16 @@ namespace DataSource.Model
         [JsonPropertyName("customerid")]
         public int CustomerID { get; set; }
 
+        [JsonPropertyName("password")]
+        public string Password { get; set; }
+
         List<Reciept> Reciepts { get; set; }
 
         CreditCard cCard = new CreditCard() { };
-        
+
+        public List<ProductDTO> ProductsInCart { get; set; }
+
+        public List<Guid> CartList { get; set; }
+
     }
 }

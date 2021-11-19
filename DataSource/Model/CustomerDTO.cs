@@ -23,7 +23,7 @@ namespace DataSource.Model
 
         CreditCard cCard = new CreditCard() { };
 
-        public List<ProductDTO> ProductsInCart { get; set; }
+        public List<ProductDTO> ProductsInCart = new List<ProductDTO>();
 
         public List<Guid> CartList { get; set; }
 

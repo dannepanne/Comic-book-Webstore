@@ -17,43 +17,63 @@ namespace ComicWebstoreExa.Pages.WebShop
 
         public CustomerDTO thisCustomer { get; set; }
 
+        [BindProperty]
         public int ProductID { get; set; }
+        public ILoggedIn _login { get; }
+        public IDataAccess _dataAccess { get; }
 
-        public IDataAccess _dataAccess { get; private set; }
 
-        public WebShopModel(IDataAccess dataAccess)
+        public WebShopModel(IDataAccess dataAccess, ILoggedIn login)
         {
+            _login = login;
             _dataAccess = dataAccess;
-        }
-
-
-
-        public List<ProductDTO> Products = new List<ProductDTO>();
-        public List<CustomerDTO> Customers = new List<CustomerDTO>();
-
-
-
-        public void OnGet(int id, Cart.Cart newcart)
-        {
-            Customers = _dataAccess.GetListCust();
-            CustomerDTO result = (CustomerDTO)Customers.Where(s => s.CustomerID == id);
-            thisCustomer = result;
-            NewCart = newcart;
-            CustomerID = id;
             Products = _dataAccess.GetAllProducts().ToList();
+            Customers = _dataAccess.GetListCust();
         }
 
-        public IActionResult PutInCart()
+
+        public List<ProductDTO> Products { get; set; }
+        public List<CustomerDTO> Customers { get; set; }
+
+        
+        
+       
+
+
+        public void OnGet(int id)
         {
-            if (ModelState.IsValid)
-            {
-                ProductDTO result = (ProductDTO)Products.Where(s => s.ProductID == ProductID);
-                thisCustomer.ProductsInCart.Add(result);
 
-                return Page();
+            if (id != 0)
+            {
+                thisCustomer = _dataAccess.CustGetById(id, Customers);
+                _login.setCust(thisCustomer);
+                
+                CustomerID = id;
             }
-            return Page();
+
+            thisCustomer = _login.giveCust();
+            CustomerID = thisCustomer.CustomerID;
+            
         }
+
+        public void OnPostPutInCart()
+        {
+            thisCustomer = _login.giveCust();
+            ProductDTO result = _dataAccess.ProdGetById(ProductID, Products); 
+            
+            thisCustomer.ProductsInCart.Add(result);
+
+
+        }
+
+        //public IActionResult GoToCart()
+        //{
+           
+
+        //        //Cart.Cart newCart = new Cart.Cart() { CustCartID = CustomerID }; skapa denna i webshoppen 
+        //        return RedirectToPage("/Cart/Cart", "Cart", new { CustomerID });
+           
+        //}
 
 
     }

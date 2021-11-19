@@ -12,7 +12,7 @@ namespace ComicWebstoreExa.Pages.Login
     public class LoginModel : PageModel
     {
         [BindProperty]
-        public int CustomerID { get; set; }
+        public int ID { get; set; }
 
         public IDataAccess _dataAccess { get; private set; }
 
@@ -34,9 +34,9 @@ namespace ComicWebstoreExa.Pages.Login
             if (ModelState.IsValid)
             {
 
-
-                Cart.Cart newCart = new Cart.Cart() { CustCartID = CustomerID };
-                return RedirectToPage("/WebShop/WebShop", "WebShop", new { CustomerID, newCart });
+                
+                //Cart.Cart newCart = new Cart.Cart() { CustCartID = CustomerID }; skapa denna i webshoppen 
+                return RedirectToPage("/WebShop/WebShop", "WebShop", new { ID });
             }
 
             return Page();

@@ -37,12 +37,16 @@ namespace ComicWebstoreExa.Pages.Cart
         public void OnGet(CustomerDTO thisCustomer)
         {
             CurrentCustomer = thisCustomer;
-            foreach (var item in thisCustomer.ProductsInCart)
+            if (thisCustomer.ProductsInCart.Count > 0)
             {
-                CurrentCart.ProductsInCart.Add(item);
-                CurrentCart.CustCartID = CurrentCustomer.CustomerID;
-                CurrentCustomer.CartList.Add(CurrentCart.CartID);
+                foreach (var item in thisCustomer.ProductsInCart)
+                {
+                    CurrentCart.ProductsInCart.Add(item);
+                    CurrentCart.CustCartID = CurrentCustomer.CustomerID;
+                    CurrentCustomer.CartList.Add(CurrentCart.CartID);
+                }
             }
+            
         }
     }
 }

@@ -2,7 +2,9 @@
 @model ComicWebstoreExa.Pages.WebShop.WebShopModel
 @{
 }
-<<div class="d-flex justify-content-center row" >
+<h2>  Hello @Model.thisCustomer.FirstName  </h2>
+
+<div class="d-flex justify-content-center row">
     @foreach (var item in Model.Products)
     {
 
@@ -14,11 +16,30 @@
                 <h6 class="card-title">@item.ProductPrice:-</h6>
                 <p class="card-text">@item.ProductDescription</p>
                 <a href="#" class="card-link">Add to cart</a>
-                <a asp-page="/Movie" asp-route-movieId="@item.ProductID" class="btn btn-primary">More</a>
+                <form asp-page-handler="PutInCart">
+
+                    <input type="hidden" asp-for="ProductID" value="@item.ProductID" />
+                    <button type="submit">Buy @item.ProductName</button>
+                </form>
             </div>
         </div>
 
-
-
     }
+
+
+    @if (Model.thisCustomer.ProductsInCart != null)
+    {
+        foreach (var item in Model.thisCustomer.ProductsInCart)
+        {
+            <div class="card-header">
+                @item.ProductName             
+            </div>
+        }
+    }
+    div class="text-center">
+    <form method="get">
+        <button type="submit" asp-page="./Cart/Cart">Go to cart</button>
+    </form>
+
 </div>
+@Model._dataAccess.

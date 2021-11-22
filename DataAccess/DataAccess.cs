@@ -140,6 +140,7 @@ namespace DataAccess
 
         public void CustomerListSerialize(List<CustomerDTO> custlist)
         {
+
             var path = @"C:\Users\danne\source\repos\ComicWebstoreExa\DataSource\JSONData\CustomersJson.json";
             var serializedUsers = JsonConvert.SerializeObject(custlist);
             File.WriteAllText(path, serializedUsers);
@@ -147,12 +148,23 @@ namespace DataAccess
         }
 
 
-        public void CreateCart(CustomerDTO cust)
+        public void CreateCart(CustomerDTO cust, List<ProductDTO> prods)
         {
+            int cartid = cust.CustomerID + 1;            
             Cart newcart = new();
+            newcart.ProductsInCart = prods;
+            foreach (var item in cust.CartList)
+            {
+                cartid =+ 1;
+            }
+            newcart.CartID = cartid;
+            newcart.CustCartID = cust.CustomerID;
+            newcart.isPaid = false;
             cust.CartList.Add(newcart);
             
         }
+
+   
 
         public void ShowCarts(CustomerDTO cust)
         {
@@ -175,9 +187,31 @@ namespace DataAccess
 
         public void UpdateCustomerList(CustomerDTO cust)
         {
-            Customers = GetListCust();
-            var index = Customers.FindIndex(c => c.CustomerID == cust.CustomerID);
-            Customers[index] = cust;
+            Customers = GetListCust().ToList();
+
+            foreach (var item in Customers.ToList())
+            {
+                if (cust.CustomerID == item.CustomerID)
+                {
+                    var IndexOfUser = Customers.IndexOf(item);
+                    Customers[IndexOfUser]= cust;
+
+                }
+            }
+            CustomerListSerialize(Customers);
+            
+            //var index = Customers.FindIndex(c => c.CustomerID == cust.CustomerID);
+            //Customers[index] = cust;
+        }
+
+
+
+
+
+        public int IndexOfCart(CustomerDTO cust, int cartid)
+        {
+            var index = cust.CartList.FindIndex(c => c.CartID == cartid);
+            return index;
         }
 
     }

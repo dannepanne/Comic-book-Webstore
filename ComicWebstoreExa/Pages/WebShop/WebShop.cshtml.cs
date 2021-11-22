@@ -23,34 +23,32 @@ namespace ComicWebstoreExa.Pages.WebShop
         public int ProductID { get; set; }
         public ILoggedIn _login { get; }
         public IDataAccess _dataAccess { get; }
-        
+
 
         public WebShopModel(IDataAccess dataAccess, ILoggedIn login)
         {
             _login = login;
             _dataAccess = dataAccess;
-            
-            //CustomerList = _dataAccess.GetListCust();
             SetCustomer();
             LoadProducts();
         }
 
 
         public List<ProductDTO> ProductList = new();
-        //public List<CustomerDTO> CustomerList { get; set; }
+        
 
-       
+
 
         public void SearchName(string searchItem)
         {
 
             ProductList = _dataAccess.SearchBarName(searchItem).ToList();
-            
+
         }
 
         public List<ProductDTO> LoadProducts()
         {
-            
+
             return _dataAccess.GetAllProducts().ToList();
         }
 
@@ -59,30 +57,25 @@ namespace ComicWebstoreExa.Pages.WebShop
             ProductList = _dataAccess.SortListProd(sortTerm).ToList();
         }
 
-        
+
 
         public CustomerDTO SetCustomer()
         {
             return thisCustomer = _login.giveCust();
         }
 
-        
-        public void OnGet(/*int id*/)
-        {
 
-            //if (id != 0)
-            //{
-                
-                ProductList = _dataAccess.GetListProd();
-                //CustomerID = id;
-            //}
+        public void OnGet()
+        {
+          
+            ProductList = _dataAccess.GetListProd();
 
             thisCustomer = _login.giveCust();
             CustomerID = thisCustomer.CustomerID;
-            //if (Products == null)
-            //{
-            //    Products = LoadProducts();
-            //}
+            if (thisCustomer.cCard == null)
+            {
+                _dataAccess.CreateCreditCard(thisCustomer);
+            }
             
         }
 
@@ -90,14 +83,14 @@ namespace ComicWebstoreExa.Pages.WebShop
         {
             ProductList = _dataAccess.GetListProd();
             thisCustomer = SetCustomer();
-            ProductDTO result = _dataAccess.ProdGetById(ProductID); 
-            
+            ProductDTO result = _dataAccess.ProdGetById(ProductID);
+
             thisCustomer.ProductsInCart.Add(result);
 
 
         }
 
-        
+
 
 
     }

@@ -14,6 +14,7 @@ namespace ComicWebstoreExa
         public void setCust(CustomerDTO cust)
         {
             currentCustomer = cust;
+            
         }
         public void setCart(List<ProductDTO> cart)
         {

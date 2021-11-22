@@ -25,11 +25,11 @@ namespace DataSource.Model
         [JsonPropertyName("creditcard")]
         public CreditCard cCard { get; set; }
 
-
+        
         public List<ProductDTO> ProductsInCart = new List<ProductDTO>();
 
         [JsonPropertyName("cartlist")]
-        public List<Cart> CartList { get; set; }
+        public List<Cart> CartList = new();
 
         public string FullName()
         {

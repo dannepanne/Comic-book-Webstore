@@ -9,7 +9,7 @@ namespace DataSource.Model
     public class Cart
     {
         public List<ProductDTO> ProductsInCart { get; set; }
-        public Guid CartID { get; set; }
+        public int CartID { get; set; }
         public int CustCartID { get; set; }
         public bool isPaid { get; set; }
 

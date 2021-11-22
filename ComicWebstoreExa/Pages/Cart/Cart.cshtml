@@ -18,22 +18,28 @@
 
         </div>
     }
-    <div class="card-text"> @Model.ProductsTotal()  </div>
+    <div class="card-text"> @Model.ProductsTotal() bucks </div>
+    <div class="card-text"> Shipping: @Model.ShippingTotal() bucks </div>
 
+    <div class="text-center">
+        <form method="get">
+            <button type="submit" asp-page="./TransactionCompleted">Checkout</button>
+        </form>
 
+    </div>
 }
 @if (Model.CurrentCustomer.ProductsInCart.Count == 0)
 {
-<div>
+    <div>
 
-    <h3>  Oh no  </h3>
+        <h3>  Oh no  </h3>
 
 
-    <h3>  Your shoppingcart is empty, buy something!  </h3>
+        <h3>  Your shoppingcart is empty, buy something!  </h3>
 
-    <img src="https://images.vectorhq.com/images/previews/c4c/sad-face-psd-435389.png" alt="SADFACE" />
+        <img src="https://images.vectorhq.com/images/previews/c4c/sad-face-psd-435389.png" alt="SADFACE" />
 
-</div>
+    </div>
 
 
 }

@@ -8,7 +8,7 @@ namespace DataSource.Model
 {
     public class Reciept
     {
-        public Guid RecieptCartID { get; set; }
+        public int RecieptCartID { get; set; }
         public List<ProductDTO> RecieptProducts { get; set; }
         public int RecieptSum { get; set; }
 

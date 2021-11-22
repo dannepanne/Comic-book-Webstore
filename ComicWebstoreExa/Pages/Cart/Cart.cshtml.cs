@@ -25,9 +25,14 @@ namespace ComicWebstoreExa.Pages.Cart
             {
                 total += item.ProductPrice; 
             }
+
             return total;
         }
-
+        public int ShippingTotal()
+        {
+            int shiptot = DataAccess.CalculateShipping(CurrentCustomer.ProductsInCart);
+            return shiptot;
+        }
        
 
         public CustomerDTO CurrentCustomer { get; set; }
@@ -39,16 +44,19 @@ namespace ComicWebstoreExa.Pages.Cart
         public void OnGet(/*List<ProductDTO> thisCartList*/)
         {
             CurrentCustomer = LoggedIn.giveCust();
+            DataAccess.CreateCart(CurrentCustomer, CurrentCustomer.ProductsInCart);
+            DataAccess.UpdateCustomerList(LoggedIn.giveCust());
+            //DataAccess.CustomerListSerialize(DataAccess.GetListCust());
             //if (CurrentCustomer.ProductsInCart.Count > 0)
             //{
             //    foreach (var item in CurrentCustomer.ProductsInCart)
             //    {
-            //        CurrentCart.ProductsInCart.Add(item);
+            //        CurrentCustomer.ProductsInCart.Add(item);
             //        CurrentCart.CustCartID = CurrentCustomer.CustomerID;
             //        CurrentCustomer.CartList.Add(CurrentCart.CartID);
             //    }
             //}
-            Cart newcart = DataAccess.
+            
             
         }
     }

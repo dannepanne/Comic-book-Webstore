@@ -17,7 +17,8 @@ namespace DataAccess
         public Reciept ReturnReciept(CustomerDTO cust, Cart cart);
         public CreditCard CreateCreditCard(CustomerDTO cust);
         public void UpdateCustomerList(CustomerDTO cust);
-        public void CreateCart(CustomerDTO cust);
+        public void CreateCart(CustomerDTO cust, List<ProductDTO> prods);
         public void CustomerListSerialize(List<CustomerDTO> custlist);
+        public int CalculateShipping(List<ProductDTO> prodlist);
     }
 }

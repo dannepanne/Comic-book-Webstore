@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace DataSource.Model
 {
-    class Reciept
+    public class Reciept
     {
-        public int RecieptCartID { get; set; }
+        public Guid RecieptCartID { get; set; }
         public List<ProductDTO> RecieptProducts { get; set; }
         public int RecieptSum { get; set; }
+
     }
 }

@@ -1,10 +1,10 @@
-﻿using DataSource.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
-namespace ComicWebstoreExa.Pages.Cart
+namespace DataSource.Model
 {
     public class Cart
     {
@@ -12,5 +12,16 @@ namespace ComicWebstoreExa.Pages.Cart
         public Guid CartID { get; set; }
         public int CustCartID { get; set; }
         public bool isPaid { get; set; }
+
+        public int CartSum()
+        {
+            int sum = 0;
+            foreach (var item in ProductsInCart)
+            {
+                sum += item.ProductPrice;
+            }
+            return sum;
+
+        }
     }
 }

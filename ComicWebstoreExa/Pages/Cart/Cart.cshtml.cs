@@ -11,41 +11,44 @@ namespace ComicWebstoreExa.Pages.Cart
 {
     public class CartModel : PageModel
     {
-        int productsTotal = 0;
+        
     
-        public CartModel(IDataAccess _dataaccess)
+        public CartModel(IDataAccess _dataaccess, ILoggedIn _loggedin)
         {
             DataAccess = _dataaccess;
+            LoggedIn = _loggedin;
         }
-        public int ProductsTotal(Cart cart)
+        public int ProductsTotal()
         {
             int total = 0;
-            foreach (var item in cart.ProductsInCart)
+            foreach (var item in CurrentCustomer.ProductsInCart)
             {
                 total += item.ProductPrice; 
             }
             return total;
         }
 
-        
-        public Cart CurrentCart { get; set; }
+       
 
         public CustomerDTO CurrentCustomer { get; set; }
 
         public IDataAccess DataAccess { get; }
 
-        public void OnGet(CustomerDTO thisCustomer)
+        public ILoggedIn LoggedIn { get; }
+
+        public void OnGet(/*List<ProductDTO> thisCartList*/)
         {
-            CurrentCustomer = thisCustomer;
-            if (thisCustomer.ProductsInCart.Count > 0)
-            {
-                foreach (var item in thisCustomer.ProductsInCart)
-                {
-                    CurrentCart.ProductsInCart.Add(item);
-                    CurrentCart.CustCartID = CurrentCustomer.CustomerID;
-                    CurrentCustomer.CartList.Add(CurrentCart.CartID);
-                }
-            }
+            CurrentCustomer = LoggedIn.giveCust();
+            //if (CurrentCustomer.ProductsInCart.Count > 0)
+            //{
+            //    foreach (var item in CurrentCustomer.ProductsInCart)
+            //    {
+            //        CurrentCart.ProductsInCart.Add(item);
+            //        CurrentCart.CustCartID = CurrentCustomer.CustomerID;
+            //        CurrentCustomer.CartList.Add(CurrentCart.CartID);
+            //    }
+            //}
+            Cart newcart = DataAccess.
             
         }
     }

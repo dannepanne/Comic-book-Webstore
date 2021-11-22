@@ -2,6 +2,7 @@
 using DataSource.Model;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace DataAccess
@@ -43,7 +44,7 @@ namespace DataAccess
             Customers = (List<CustomerDTO>)_dataSource.GetAllCustomers();
         }
 
-        public CustomerDTO CustGetById(int idwhere, List<CustomerDTO> CustomerList)
+        public CustomerDTO CustGetById(int idwhere)
         {
             //int index = 0;
             //CustomerDTO result =  t in Customers where t.CustomerID = idwhere;//
@@ -60,6 +61,7 @@ namespace DataAccess
             //}
             //return Customers[index];
             //return result;
+            List<CustomerDTO> CustomerList = GetListCust();
             foreach (var item in CustomerList)
             {
                 if (item.CustomerID == idwhere)
@@ -69,10 +71,11 @@ namespace DataAccess
             }
             return null;
         }
-        public ProductDTO ProdGetById(int idwhere, List<ProductDTO> ProductList)
+        public ProductDTO ProdGetById(int idwhere)
         {
             //ProductDTO result = (ProductDTO)Products.Where(s => s.ProductID == idwhere);
-            foreach (var item in ProductList)
+            List<ProductDTO> ProductList = GetListProd();
+            foreach (ProductDTO item in ProductList)
             {
                 if (item.ProductID == idwhere)
                 {
@@ -104,7 +107,78 @@ namespace DataAccess
             return result;
         }
 
+        
+        public IEnumerable<ProductDTO> SortListProd(string sorting)
+        {
+            if (sorting == "Price")
+            {
 
+                return GetAllProducts().OrderBy(p => p.ProductPrice);
+            }
+            else
+            {
+
+                return GetAllProducts().OrderBy(p => p.ProductName);
+            }
+
+        }
+        public IEnumerable<ProductDTO> SearchBarName(string search)
+        {
+            if (string.IsNullOrEmpty(search))
+            {
+                return GetAllProducts();
+            }
+            else
+            {
+                return GetAllProducts().Where(p => p.ProductName.Contains(search));
+            }
+        }
+
+
+
+        //JSON SERIALIZE CUSTOMER
+
+        public void CustomerListSerialize(List<CustomerDTO> custlist)
+        {
+            var path = @"C:\Users\danne\source\repos\ComicWebstoreExa\DataSource\JSONData\CustomersJson.json";
+            var serializedUsers = JsonConvert.SerializeObject(custlist);
+            File.WriteAllText(path, serializedUsers);
+            
+        }
+
+
+        public void CreateCart(CustomerDTO cust)
+        {
+            Cart newcart = new();
+            cust.CartList.Add(newcart);
+            
+        }
+
+        public void ShowCarts(CustomerDTO cust)
+        {
+            
+        }
+
+        public CreditCard CreateCreditCard(CustomerDTO cust)
+        {
+            CreditCard cCard = new CreditCard { CardNumber = cust.CustomerID + cust.CustomerID + cust.CustomerID, CardName = cust.FullName() };
+            return cCard;
+        }
+
+        public Reciept ReturnReciept(CustomerDTO cust, Cart cart)
+        {
+            Reciept reciept = new Reciept { RecieptCartID = cart.CartID, RecieptProducts = cart.ProductsInCart, RecieptSum = cart.CartSum() };
+            return reciept;
+        }
+
+        
+
+        public void UpdateCustomerList(CustomerDTO cust)
+        {
+            Customers = GetListCust();
+            var index = Customers.FindIndex(c => c.CustomerID == cust.CustomerID);
+            Customers[index] = cust;
+        }
 
     }
 }

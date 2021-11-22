@@ -15,10 +15,12 @@ namespace ComicWebstoreExa.Pages.Login
         public int ID { get; set; }
 
         public IDataAccess _dataAccess { get; private set; }
+        public ILoggedIn _login { get; }
 
-        public LoginModel(IDataAccess dataAccess)
+        public LoginModel(IDataAccess dataAccess, ILoggedIn loggdIn)
         {
             _dataAccess = dataAccess;
+            _login = loggdIn;
         }
 
 
@@ -34,9 +36,10 @@ namespace ComicWebstoreExa.Pages.Login
             if (ModelState.IsValid)
             {
 
-                
+                //thisCustomer = _dataAccess.CustGetById(id, Customers);
+                _login.setCust(_dataAccess.CustGetById(ID));
                 //Cart.Cart newCart = new Cart.Cart() { CustCartID = CustomerID }; skapa denna i webshoppen 
-                return RedirectToPage("/WebShop/WebShop", "WebShop", new { ID });
+                return RedirectToPage("/WebShop/WebShop", "WebShop"/*, new {ID}*/);
             }
 
             return Page();

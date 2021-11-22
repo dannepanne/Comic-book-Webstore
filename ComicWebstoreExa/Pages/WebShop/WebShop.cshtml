@@ -2,10 +2,50 @@
 @model ComicWebstoreExa.Pages.WebShop.WebShopModel
 @{
 }
+
 <h2>  Hello @Model.thisCustomer.FirstName  </h2>
+@if (Model.thisCustomer.ProductsInCart != null)
+{
+    <h5>Products in cart:</h5>
+    @if (Model.thisCustomer.ProductsInCart.Count == 0)
+    {
+        <h2>Empty</h2>
+    }
+    foreach (var item in Model.thisCustomer.ProductsInCart)
+    {
+        <div class="card-header">
+            @item.ProductName
+
+        </div>
+    }
+    
+}
+
+<form method="get">
+    
+    <div class="form-group">
+        <div class="input-group">
+            <input type="search" class="form-control" value="" name="searchName" />
+            <span class="input-grpup-btn">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search for something</button>
+            </span>
+        </div>
+    </div>
+</form>
+<div class="container-fluid">
+    <form asp-for="/WebShop" asp-page-handler="SortThis">
+        <input type="hidden" asp-for="sortTerm" value="Name" />
+        <button type="submit">Sort by name</button>
+        <input type="hidden" asp-for="sortTerm" value="Price" />
+        <button type="submit">Sort by price</button>
+    </form>
+</div>
+
+
+
 
 <div class="d-flex justify-content-center row">
-    @foreach (var item in Model.Products)
+    @foreach (var item in Model.ProductList)
     {
 
         <div class="card" style="width: 300px !important;">
@@ -19,27 +59,20 @@
                 <form asp-page-handler="PutInCart">
 
                     <input type="hidden" asp-for="ProductID" value="@item.ProductID" />
-                    <button type="submit">Buy @item.ProductName</button>
+                    <button type="submit">Add to cart @item.ProductName</button>
                 </form>
             </div>
         </div>
 
     }
-
-
-    @if (Model.thisCustomer.ProductsInCart != null)
-    {
-        foreach (var item in Model.thisCustomer.ProductsInCart)
-        {
-            <div class="card-header">
-                @item.ProductName             
-            </div>
-        }
-    }
-    div class="text-center">
-    <form method="get">
-        <button type="submit" asp-page="./Cart/Cart">Go to cart</button>
-    </form>
-
 </div>
-@Model._dataAccess.
+
+
+    @*<div class="text-center">
+            <form method="get">
+                <button type="submit" asp-page="./Cart/Cart">Go to cart</button>
+            </form>
+
+        </div>*@
+
+

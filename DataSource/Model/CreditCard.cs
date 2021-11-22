@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataSource.Model
 {
-    class CreditCard
+    public class CreditCard
     {
         public int CardNumber { get; set; }
         public string CardName { get; set; }

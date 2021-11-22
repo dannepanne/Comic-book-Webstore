@@ -3,9 +3,9 @@
 @{
 }
 
-@if (Model.CurrentCart.ProductsInCart.Count != 0)
+@if (Model.CurrentCustomer.ProductsInCart.Count != 0)
 {
-    @foreach (var item in Model.CurrentCart.ProductsInCart)
+    @foreach (var item in Model.CurrentCustomer.ProductsInCart)
     {
         <div class="card text-center">
             <div class="card-header">
@@ -18,11 +18,11 @@
 
         </div>
     }
-    <div class="card-text"> @Model.ProductsTotal(Model.CurrentCart)  </div>
+    <div class="card-text"> @Model.ProductsTotal()  </div>
 
 
 }
-@if (Model.CurrentCart.ProductsInCart.Count == 0)
+@if (Model.CurrentCustomer.ProductsInCart.Count == 0)
 {
 <div>
 

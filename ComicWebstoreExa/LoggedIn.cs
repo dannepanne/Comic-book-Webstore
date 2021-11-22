@@ -10,7 +10,7 @@ namespace ComicWebstoreExa
     {
         public CustomerDTO currentCustomer { get; set; }
         public List<ProductDTO> currentCart { get; set; }
-
+        
         public void setCust(CustomerDTO cust)
         {
             currentCustomer = cust;

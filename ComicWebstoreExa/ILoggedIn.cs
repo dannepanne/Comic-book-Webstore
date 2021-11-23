@@ -12,6 +12,7 @@ namespace ComicWebstoreExa
         public int GetCartID();
 
         public void SetCartID(int cart);
+        public bool IsLoggedIn();
 
 
 

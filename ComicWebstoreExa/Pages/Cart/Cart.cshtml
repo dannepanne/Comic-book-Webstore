@@ -2,46 +2,63 @@
 @model ComicWebstoreExa.Pages.Cart.CartModel
 @{
 }
-
-@if (Model.CurrentCustomer.ProductsInCart.Count != 0)
+@if (Model.LoggedIn.IsLoggedIn() == true)
 {
-    @foreach (var item in Model.CurrentCustomer.ProductsInCart)
+    @if (Model.CurrentCustomer.ProductsInCart.Count != 0)
     {
-        <div class="card text-center">
-            <div class="card-header">
-                @item.ProductName
-                @item.ProductPrice
-            </div>
-            <div class="card-body">
+        @foreach (var item in Model.CurrentCustomer.ProductsInCart)
+        {
+            <div class="card text-center">
+                <div class="card-header">
+                    @item.ProductName
+                    @item.ProductPrice
+                </div>
+                <div class="card-body">
+
+                </div>
 
             </div>
+        }
+        <div class="card-text"> @Model.ProductsTotal() bucks </div>
+        <div class="card-text"> Shipping: @Model.ShippingTotal() bucks </div>
+
+        <div class="text-center">
+            <form method="get">
+                <button type="submit" asp-page="./TransactionCompleted">Checkout</button>
+            </form>
 
         </div>
     }
-    <div class="card-text"> @Model.ProductsTotal() bucks </div>
-    <div class="card-text"> Shipping: @Model.ShippingTotal() bucks </div>
+    @if (Model.CurrentCustomer.ProductsInCart.Count == 0)
+    {
+        <div>
 
-    <div class="text-center">
-        <form method="get">
-            <button type="submit" asp-page="./TransactionCompleted">Checkout</button>
-        </form>
+            <h3>  Oh no  </h3>
 
-    </div>
+
+            <h3>  Your shoppingcart is empty, buy something!  </h3>
+
+            <img src="https://images.vectorhq.com/images/previews/c4c/sad-face-psd-435389.png" alt="SADFACE" />
+
+        </div>
+
+
+    }
 }
-@if (Model.CurrentCustomer.ProductsInCart.Count == 0)
+
+
+
+@if (Model.LoggedIn.IsLoggedIn() == false)
 {
     <div>
 
         <h3>  Oh no  </h3>
 
 
-        <h3>  Your shoppingcart is empty, buy something!  </h3>
+        <h3>  You are not logged in  </h3>
 
         <img src="https://images.vectorhq.com/images/previews/c4c/sad-face-psd-435389.png" alt="SADFACE" />
 
     </div>
-
-
 }
-
 

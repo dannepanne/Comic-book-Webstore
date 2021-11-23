@@ -11,6 +11,7 @@ namespace ComicWebstoreExa.Pages.WebShop
 {
     public class WebShopModel : PageModel
     {
+
         [BindProperty]
         public int CustomerID { get; set; }
         [BindProperty]
@@ -25,7 +26,7 @@ namespace ComicWebstoreExa.Pages.WebShop
         public int ProductID { get; set; }
         public ILoggedIn _login { get; }
         public IDataAccess _dataAccess { get; }
-
+        public string FirstName { get; set; }
 
         public WebShopModel(IDataAccess dataAccess, ILoggedIn login)
         {
@@ -78,14 +79,23 @@ namespace ComicWebstoreExa.Pages.WebShop
           
             ProductList = _dataAccess.GetListProd();
 
-            
-            CustomerID = thisCustomer.CustomerID;
-            thisCustomer = _login.giveCust();
-            
-            if (thisCustomer.cCard == null)
+            if (_login.IsLoggedIn() == true)
             {
-                _dataAccess.CreateCreditCard(thisCustomer);
+                CustomerID = thisCustomer.CustomerID;
+                FirstName = thisCustomer.FirstName;
+                thisCustomer = _login.giveCust();
+                if (thisCustomer.cCard == null)
+                {
+                    _dataAccess.CreateCreditCard(thisCustomer);
+                }
             }
+            else
+            {
+                FirstName = "Nobody";
+            }
+            
+            
+            
             
         }
 

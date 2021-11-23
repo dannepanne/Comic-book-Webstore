@@ -3,8 +3,8 @@
 @{
 }
 
-<h2>  Hello @Model.thisCustomer.FirstName  </h2>
-@if (Model.thisCustomer.ProductsInCart != null)
+<h2>  Hello @Model.FirstName  </h2>
+@if (Model._login.IsLoggedIn() == true)
 {
     <h5>Products in cart:</h5>
     @if (Model.thisCustomer.ProductsInCart.Count == 0)

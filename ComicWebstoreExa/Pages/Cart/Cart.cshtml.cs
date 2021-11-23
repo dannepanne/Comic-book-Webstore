@@ -44,9 +44,13 @@ namespace ComicWebstoreExa.Pages.Cart
         public void OnGet(/*List<ProductDTO> thisCartList*/)
         {
             CurrentCustomer = LoggedIn.giveCust();
-            cartID = DataAccess.CreateCart(CurrentCustomer, CurrentCustomer.ProductsInCart);
-            LoggedIn.SetCartID(cartID);
-            DataAccess.UpdateCustomerList(LoggedIn.giveCust());
+            if (LoggedIn.IsLoggedIn() == true)
+            {
+                cartID = DataAccess.CreateCart(CurrentCustomer, CurrentCustomer.ProductsInCart);
+                LoggedIn.SetCartID(cartID);
+                DataAccess.UpdateCustomerList(LoggedIn.giveCust());
+            }
+            
 
 
             //DataAccess.CustomerListSerialize(DataAccess.GetListCust());

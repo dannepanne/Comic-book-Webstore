@@ -13,10 +13,11 @@ namespace ComicWebstoreExa.Pages.Login
     {
         [BindProperty]
         public int ID { get; set; }
-
+        [BindProperty]
+        public string password { get; set; }
         public IDataAccess _dataAccess { get; private set; }
         public ILoggedIn _login { get; }
-
+        public string wrong { get; set; }
         public LoginModel(IDataAccess dataAccess, ILoggedIn loggdIn)
         {
             _dataAccess = dataAccess;
@@ -30,10 +31,11 @@ namespace ComicWebstoreExa.Pages.Login
         {
             Customers = _dataAccess.GetListCust();
         }
-
+        public CustomerDTO thisCust { get; set; }
         public IActionResult OnPostLogin()
         {
-            if (ModelState.IsValid)
+            thisCust = _dataAccess.CustGetById(ID);
+            if (ModelState.IsValid && password == thisCust.Password)
             {
 
                 //thisCustomer = _dataAccess.CustGetById(id, Customers);
@@ -41,7 +43,10 @@ namespace ComicWebstoreExa.Pages.Login
                 //Cart.Cart newCart = new Cart.Cart() { CustCartID = CustomerID }; skapa denna i webshoppen 
                 return RedirectToPage("/WebShop/WebShop", "WebShop"/*, new {ID}*/);
             }
-
+            else
+            {
+                wrong = "Wrong password, try again!";
+            }
             return Page();
         }
        

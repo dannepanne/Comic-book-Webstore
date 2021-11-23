@@ -10,7 +10,8 @@ namespace ComicWebstoreExa
     {
         public CustomerDTO currentCustomer { get; set; }
         public List<ProductDTO> currentCart { get; set; }
-        
+        public int cartID { get; set; }
+
         public void setCust(CustomerDTO cust)
         {
             currentCustomer = cust;
@@ -28,6 +29,15 @@ namespace ComicWebstoreExa
         {
             return currentCart;
         }
+        public int GetCartID()
+        {
+            return cartID;
+        }
+        public void SetCartID(int cart)
+        {
+            cartID = cart;
+        }
+        
     }
 
    

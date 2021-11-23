@@ -21,24 +21,28 @@
     
 }
 
-<form method="get">
+<form asp-page-handler="SearchName">
     
     <div class="form-group">
         <div class="input-group">
-            <input type="search" class="form-control" value="" name="searchName" />
-            <span class="input-grpup-btn">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search for something</button>
-            </span>
+
+                <input type="search" class="form-control" asp-for="@Model.SearchTerm" />
+                <span class="input-grpup-btn">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search for something</button>
+                </span>
+
         </div>
     </div>
 </form>
 <div class="container-fluid">
-    <form asp-for="/WebShop" asp-page-handler="SortThis">
-        <input type="hidden" asp-for="sortTerm" value="Name" />
+    <form asp-for="/WebShop" asp-page-handler="SortThisName">
+        <input type="hidden"  value="Name" />
         <button type="submit">Sort by name</button>
-        <input type="hidden" asp-for="sortTerm" value="Price" />
-        <button type="submit">Sort by price</button>
-    </form>
+        </form>
+        <form asp-for="/WebShop" asp-page-handler="SortThisPrice">
+            <input type="hidden"  value="Price" />
+            <button type="submit">Sort by price</button>
+        </form>
 </div>
 
 
@@ -53,7 +57,9 @@
             <img class="card-img-top" src="@item.ProductImage" alt="Card image cap">
             <div class="card-body">
                 <h5 class="card-title">@item.ProductName</h5>
+
                 <h6 class="card-title">@item.ProductPrice:-</h6>
+
                 <p class="card-text">@item.ProductDescription</p>
                 <a href="#" class="card-link">Add to cart</a>
                 <form asp-page-handler="PutInCart">

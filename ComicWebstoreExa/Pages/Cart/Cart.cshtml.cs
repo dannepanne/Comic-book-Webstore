@@ -11,8 +11,8 @@ namespace ComicWebstoreExa.Pages.Cart
 {
     public class CartModel : PageModel
     {
-        
-    
+
+        public int cartID { get; set; }
         public CartModel(IDataAccess _dataaccess, ILoggedIn _loggedin)
         {
             DataAccess = _dataaccess;
@@ -44,8 +44,11 @@ namespace ComicWebstoreExa.Pages.Cart
         public void OnGet(/*List<ProductDTO> thisCartList*/)
         {
             CurrentCustomer = LoggedIn.giveCust();
-            DataAccess.CreateCart(CurrentCustomer, CurrentCustomer.ProductsInCart);
+            cartID = DataAccess.CreateCart(CurrentCustomer, CurrentCustomer.ProductsInCart);
+            LoggedIn.SetCartID(cartID);
             DataAccess.UpdateCustomerList(LoggedIn.giveCust());
+
+
             //DataAccess.CustomerListSerialize(DataAccess.GetListCust());
             //if (CurrentCustomer.ProductsInCart.Count > 0)
             //{

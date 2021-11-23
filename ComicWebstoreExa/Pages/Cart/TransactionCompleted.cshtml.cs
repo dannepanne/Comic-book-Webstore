@@ -29,12 +29,14 @@ namespace ComicWebstoreExa.Pages.Cart
             }
             return total;
         }
-
+        //thisCust.ProductsInCart.Clear();
         public void OnGet()
         {
             thisCust = _loggedin.giveCust();
             //index of cart OnGet!
-            Reciept reciept = new Reciept() { RecieptCartID = , RecieptProducts = thisCust.ProductsInCart, RecieptSum = ProductsTotal() + _dataAccess.CalculateShipping(thisCust.ProductsInCart) };
+            _dataAccess.CreateReciept(thisCust, _loggedin.GetCartID(), thisCust.ProductsInCart, ProductsTotal() + _dataAccess.CalculateShipping(thisCust.ProductsInCart));
+            
+            //thisCust.Reciepts.Add(reciept);
             //_dataAccess.UpdateCustomerList(_loggedin.giveCust());
             //_dataAccess.CustomerListSerialize(_dataAccess.GetListCust());
         }
@@ -42,3 +44,4 @@ namespace ComicWebstoreExa.Pages.Cart
         
     }
 }
+/////////////////////////FEL KVITTONUMMER GES

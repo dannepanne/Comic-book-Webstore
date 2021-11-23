@@ -108,20 +108,24 @@ namespace DataAccess
         }
 
         
-        public IEnumerable<ProductDTO> SortListProd(string sorting)
+        public IEnumerable<ProductDTO> SortListProName()
         {
-            if (sorting == "Price")
-            {
-
-                return GetAllProducts().OrderBy(p => p.ProductPrice);
-            }
-            else
-            {
-
+           
                 return GetAllProducts().OrderBy(p => p.ProductName);
-            }
+
 
         }
+
+
+        public IEnumerable<ProductDTO> SortListProPrice()
+        {
+
+            return GetAllProducts().OrderBy(p => p.ProductPrice);
+
+        }
+
+
+                
         public IEnumerable<ProductDTO> SearchBarName(string search)
         {
             if (string.IsNullOrEmpty(search))
@@ -148,7 +152,7 @@ namespace DataAccess
         }
 
 
-        public void CreateCart(CustomerDTO cust, List<ProductDTO> prods)
+        public int CreateCart(CustomerDTO cust, List<ProductDTO> prods)
         {
             int cartid = cust.CustomerID + 1;            
             Cart newcart = new();
@@ -161,10 +165,10 @@ namespace DataAccess
             newcart.CustCartID = cust.CustomerID;
             newcart.isPaid = false;
             cust.CartList.Add(newcart);
-            
+            return newcart.CartID;
         }
 
-   
+        
 
         public void ShowCarts(CustomerDTO cust)
         {
@@ -214,5 +218,13 @@ namespace DataAccess
             return index;
         }
 
+        public void CreateReciept(CustomerDTO cust, int id, List<ProductDTO> list, int total)
+        {
+            
+            Reciept reciept = new Reciept(){ RecieptCartID = id, RecieptProducts = list, RecieptSum = total };
+            cust.Reciepts = new List<Reciept>();
+            cust.Reciepts.Add(reciept);
+        }
+        
     }
 }

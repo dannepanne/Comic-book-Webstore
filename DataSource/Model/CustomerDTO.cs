@@ -20,7 +20,7 @@ namespace DataSource.Model
         public string Password { get; set; }
 
         [JsonPropertyName("reciepts")]
-        List<Reciept> Reciepts { get; set; }
+        public List<Reciept> Reciepts = new();
 
         [JsonPropertyName("creditcard")]
         public CreditCard cCard { get; set; }

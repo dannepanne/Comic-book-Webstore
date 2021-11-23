@@ -9,5 +9,11 @@ namespace ComicWebstoreExa
         public void setCart(List<ProductDTO> cart);
         public List<ProductDTO> giveCart();
         public CustomerDTO giveCust();
+        public int GetCartID();
+
+        public void SetCartID(int cart);
+
+
+
     }
 }

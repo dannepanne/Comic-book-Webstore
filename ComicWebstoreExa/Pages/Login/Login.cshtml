@@ -3,7 +3,7 @@
 @{
 }
 <div>
-
+    <h2>  @Model.wrong  </h2>
     <h3>  Choose Customer:  </h3>
 
 </div>
@@ -17,8 +17,9 @@
         </div>
         <div class="card-body">
             <form asp-page-handler="Login">
-
                 <input type="hidden" asp-for="ID" value="@item.CustomerID" />
+                <h3>    Password: </h3>
+                <input asp-for="password"/>
                 <button type="submit">Login @item.FirstName</button>
             </form>
         </div>

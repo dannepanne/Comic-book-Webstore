@@ -17,6 +17,8 @@ namespace ComicWebstoreExa.Pages.WebShop
         public string sortTerm { get; set; }
         [BindProperty]
         public string searchItem { get; set; }
+        [BindProperty]
+        public string SearchTerm { get; set; }
         public CustomerDTO thisCustomer { get; set; }
 
         [BindProperty]
@@ -34,15 +36,16 @@ namespace ComicWebstoreExa.Pages.WebShop
         }
 
 
-        public List<ProductDTO> ProductList = new();
+        public List<ProductDTO> ProductList { get; set; }
         
 
 
 
-        public void SearchName(string searchItem)
+        public IActionResult OnPostSearchName()
         {
 
-            ProductList = _dataAccess.SearchBarName(searchItem).ToList();
+            ProductList = _dataAccess.SearchBarName(SearchTerm).ToList();
+            return Page();
 
         }
 
@@ -51,12 +54,17 @@ namespace ComicWebstoreExa.Pages.WebShop
 
             return _dataAccess.GetAllProducts().ToList();
         }
-
-        public void OnPostSubmit(string sortTerm)
+        
+        public IActionResult OnPostSortThisPrice()
         {
-            ProductList = _dataAccess.SortListProd(sortTerm).ToList();
+            ProductList = _dataAccess.SortListProPrice().ToList();
+            return Page();
         }
-
+        public IActionResult OnPostSortThisName()
+        {
+            ProductList = _dataAccess.SortListProName().ToList();
+            return Page();
+        }
 
 
         public CustomerDTO SetCustomer()
@@ -70,8 +78,10 @@ namespace ComicWebstoreExa.Pages.WebShop
           
             ProductList = _dataAccess.GetListProd();
 
-            thisCustomer = _login.giveCust();
+            
             CustomerID = thisCustomer.CustomerID;
+            thisCustomer = _login.giveCust();
+            
             if (thisCustomer.cCard == null)
             {
                 _dataAccess.CreateCreditCard(thisCustomer);

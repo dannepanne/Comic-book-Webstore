@@ -31,28 +31,18 @@ namespace ComicWebstoreExa.Pages.Cart
 
         public void OnGet(/*List<ProductDTO> thisCartList*/)
         {
-            CurrentCustomer = LoggedIn.giveCust();
             if (LoggedIn.IsLoggedIn() == true)
             {
-            //    cartID = DataAccess.CreateCart(CurrentCustomer, CurrentCustomer.ProductsInCart);
-            //    LoggedIn.SetCartID(cartID);
+                CurrentCustomer = LoggedIn.giveCust();
+            
+            
                 if (CurrentCustomer.cCard == null)
                 {
                     DataAccess.CreateCreditCard(CurrentCustomer);
                 }
-                //DataAccess.UpdateCustomerList(LoggedIn.giveCust());
+                
             }
-
-            //DataAccess.CustomerListSerialize(DataAccess.GetListCust());
-            //if (CurrentCustomer.ProductsInCart.Count > 0)
-            //{
-            //    foreach (var item in CurrentCustomer.ProductsInCart)
-            //    {
-            //        CurrentCustomer.ProductsInCart.Add(item);
-            //        CurrentCart.CustCartID = CurrentCustomer.CustomerID;
-            //        CurrentCustomer.CartList.Add(CurrentCart.CartID);
-            //    }
-            //}
+            
         }
         public int ProductsTotal()
         {

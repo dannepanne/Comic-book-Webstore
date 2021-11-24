@@ -2,48 +2,65 @@
 @model ComicWebstoreExa.Pages.Login.CustomerModel
 @{
 }
-<h2>  Hello @Model.thisCustomer.FirstName  </h2>
-<div class="card-header">
-    @Model.thisCustomer.CustomerID
-</div>
-<div class="card-body">
-    
+@if (Model._login.IsLoggedIn() == true)
+{
+    <h2>  Hello @Model.thisCustomer.FirstName  </h2>
     <div class="card-header">
-        @Model.thisCustomer.FullName()
+        @Model.thisCustomer.CustomerID
     </div>
-        <div class="card-header">            
+    <div class="card-body">
+
+        <div class="card-header">
+            @Model.thisCustomer.FullName()
+        </div>
+        <div class="card-header">
             @Model.thisCustomer.cCard.CardNumber
         </div>
-    
-</div>
+
+    </div>
 
 
 
-<div class="card-header">
-    <h2>  Previous orders:  </h2>
-</div>
+    <div class="card-header">
+        <h2>  Previous orders:  </h2>
+    </div>
 
-<div class="d-flex justify-content-center row">
-    @foreach (var item in Model.thisCustomer.Reciepts)
-    {
+    <div class="d-flex justify-content-center row">
+        @foreach (var item in Model.thisCustomer.Reciepts)
+        {
 
-        <div class="card" style="width: 300px !important;">
+            <div class="card" style="width: 300px !important;">
 
-            <div class="card-header">
-                @item.RecieptCartID
+                <div class="card-header">
+                    @item.RecieptCartID
+                </div>
+                <div class="card-body">
+                    @foreach (var reciept in item.RecieptProducts) //kommer inte upp
+                    {
+                        <div class="card-header">
+                            @reciept.ProductName
+                            @reciept.ProductPrice
+
+                        </div>
+                    }
+                </div>
+                <p class="card-text">@item.RecieptSum</p>
             </div>
-            <div class="card-body">
-                @foreach (var reciept in item.RecieptProducts)
-                {
-                    <div class="card-header">
-                        @reciept.ProductName
-                        @reciept.ProductPrice
 
-                    </div>
-                }
-            </div>
-            <p class="card-text">@item.RecieptSum</p>
-        </div>
+        }
+    </div>
 
-    }
-</div>
+}
+else
+{
+    <div>
+
+        <h3>  Oh no  </h3>
+
+
+        <h3>  You need to log in to see anything here  </h3>
+
+        <img src="https://images.vectorhq.com/images/previews/c4c/sad-face-psd-435389.png" alt="SADFACE" />
+
+    </div>
+}

@@ -1,27 +1,35 @@
 ﻿@page
 @model ComicWebstoreExa.Pages.Cart.CartModel
-@{
+@{int total = Model.ProductsTotal() + Model.ShippingTotal();
 }
 @if (Model.LoggedIn.IsLoggedIn() == true)
 {
-    @if (Model.CurrentCustomer.ProductsInCart.Count != 0)
+    @if (Model.CurrentCustomer.customerCart.ProductsInCart.Count != 0)
     {
-        @foreach (var item in Model.CurrentCustomer.ProductsInCart)
+        @foreach (var item in Model.CurrentCustomer.customerCart.ProductsInCart)
         {
             <div class="card text-center">
                 <div class="card-header">
+                    
                     @item.ProductName
-                    @item.ProductPrice
+                   
                 </div>
                 <div class="card-body">
-
+                    <img src="@item.ProductImage" alt="Lovely" />
+                    @item.ProductPrice :-
                 </div>
 
             </div>
+            <form asp-page-handler="RemoveItem">
+                <input type="hidden" asp-for="itemID" value="@item.ProductID" />
+                <button type="submit">Remove @item.ProductName</button>
+            </form>
+            
         }
         <div class="card-text"> @Model.ProductsTotal() bucks </div>
         <div class="card-text"> Shipping: @Model.ShippingTotal() bucks </div>
 
+        <div class="card-text"> Total: @total  bucks </div>
         <div class="text-center">
             <form method="get">
                 <button type="submit" asp-page="./TransactionCompleted">Checkout</button>
@@ -29,7 +37,7 @@
 
         </div>
     }
-    @if (Model.CurrentCustomer.ProductsInCart.Count == 0)
+    @if (Model.CurrentCustomer.customerCart.ProductsInCart.Count == 0)
     {
         <div>
 

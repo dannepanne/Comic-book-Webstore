@@ -14,14 +14,11 @@ namespace ComicWebstoreExa.Pages.WebShop
 
         [BindProperty]
         public int CustomerID { get; set; }
-        [BindProperty]
-        public string sortTerm { get; set; }
-        [BindProperty]
-        public string searchItem { get; set; }
+
         [BindProperty]
         public string SearchTerm { get; set; }
         public CustomerDTO thisCustomer { get; set; }
-
+        public int cartid { get; set; }
         [BindProperty]
         public int ProductID { get; set; }
         public ILoggedIn _login { get; }
@@ -81,13 +78,21 @@ namespace ComicWebstoreExa.Pages.WebShop
 
             if (_login.IsLoggedIn() == true)
             {
+                
                 CustomerID = thisCustomer.CustomerID;
                 FirstName = thisCustomer.FirstName;
-                thisCustomer = _login.giveCust();
                 if (thisCustomer.cCard == null)
                 {
-                    _dataAccess.CreateCreditCard(thisCustomer);
+                    _login.setCCard(thisCustomer.FullName(), thisCustomer.CustomerID * 300);
+
                 }
+                if (thisCustomer.customerCart == null)
+                {
+                    _login.setCart(thisCustomer.CustomerID);
+                }
+               
+                thisCustomer = _login.giveCust();
+                
             }
             else
             {
@@ -105,7 +110,7 @@ namespace ComicWebstoreExa.Pages.WebShop
             thisCustomer = SetCustomer();
             ProductDTO result = _dataAccess.ProdGetById(ProductID);
 
-            thisCustomer.ProductsInCart.Add(result);
+            thisCustomer.customerCart.ProductsInCart.Add(result);
 
 
         }

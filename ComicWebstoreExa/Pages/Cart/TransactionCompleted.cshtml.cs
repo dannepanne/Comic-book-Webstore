@@ -16,6 +16,7 @@ namespace ComicWebstoreExa.Pages.Cart
             _dataAccess = dataAccess;
             _loggedin = loggedIn;
         }
+        public Reciept newReciept { get; set; }
         public CustomerDTO thisCust { get; set; }
         public IDataAccess _dataAccess { get; }
         public ILoggedIn _loggedin { get; }
@@ -23,25 +24,33 @@ namespace ComicWebstoreExa.Pages.Cart
         public int ProductsTotal()
         {
             int total = 0;
-            foreach (var item in thisCust.ProductsInCart)
+            foreach (var item in thisCust.customerCart.ProductsInCart)
             {
                 total += item.ProductPrice;
             }
             return total;
         }
-        //thisCust.ProductsInCart.Clear();
+
         public void OnGet()
         {
+
             thisCust = _loggedin.giveCust();
-            //index of cart OnGet!
-            _dataAccess.CreateReciept(thisCust, _loggedin.GetCartID(), thisCust.ProductsInCart, ProductsTotal() + _dataAccess.CalculateShipping(thisCust.ProductsInCart));
+            newReciept = _dataAccess.ReturnReciept(thisCust, _loggedin.GetCartID(), thisCust.customerCart, ProductsTotal() + _dataAccess.CalculateShipping(thisCust.customerCart.ProductsInCart), thisCust.cCard);
+            if (thisCust.Reciepts == null)
+            {
+                thisCust.Reciepts = new List<Reciept>();
+                thisCust.Reciepts.Add(newReciept);
+            }
+            else
+            {
+                thisCust.Reciepts.Add(newReciept);
+            }
             
-            //thisCust.Reciepts.Add(reciept);
-            //_dataAccess.UpdateCustomerList(_loggedin.giveCust());
-            //_dataAccess.CustomerListSerialize(_dataAccess.GetListCust());
+            _loggedin.resetCart();
+            _dataAccess.UpdateCustomerList(_loggedin.giveCust());
+            _dataAccess.CustomerListSerialize(_dataAccess.GetListCust());
         }
 
         
     }
 }
-/////////////////////////FEL KVITTONUMMER GES

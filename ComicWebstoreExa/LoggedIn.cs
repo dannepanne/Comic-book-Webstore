@@ -10,8 +10,8 @@ namespace ComicWebstoreExa
     {
         public bool IsLogIn = false;
         public CustomerDTO currentCustomer { get; set; }
-        public List<ProductDTO> currentCart { get; set; }
-        public int cartID { get; set; }
+        //public List<ProductDTO> currentCart { get; set; }
+        
         public bool IsLoggedIn()
         {
             return IsLogIn;
@@ -21,10 +21,15 @@ namespace ComicWebstoreExa
         {
             currentCustomer = cust;
             IsLogIn = true;
+            
         }
-        public void setCart(List<ProductDTO> cart)
+        public void setCart(int cartid)
         {
-            currentCart = cart;
+            currentCustomer.customerCart = new Cart() { CartID = cartid, CustCartID = currentCustomer.CustomerID, isPaid = false, ProductsInCart = new List<ProductDTO>() };
+        }
+        public void setCCard(string name, int number)
+        {
+            currentCustomer.cCard = new CreditCard() { CardName = name, CardNumber = number };
         }
         public CustomerDTO giveCust()
         {
@@ -32,18 +37,29 @@ namespace ComicWebstoreExa
         }
         public List<ProductDTO> giveCart()
         {
-            return currentCart;
+
+            return currentCustomer.customerCart.ProductsInCart;
         }
         public int GetCartID()
         {
-            return cartID;
+            return currentCustomer.customerCart.CartID;
         }
-        public void SetCartID(int cart)
+        //public void SetCartID(int cart)
+        //{
+        //    cartID = cart;
+        //}
+        public void RemoveItemAt(int itemID)
         {
-            cartID = cart;
-        }
-        
-    }
 
-   
+            int index = currentCustomer.customerCart.ProductsInCart.FindIndex(p => p.ProductID == itemID);
+            currentCustomer.customerCart.ProductsInCart.RemoveAt(index);
+
+        }
+        public void resetCart()
+        {
+            currentCustomer.customerCart.ProductsInCart.Clear();
+        }
+
+
+    }
 }

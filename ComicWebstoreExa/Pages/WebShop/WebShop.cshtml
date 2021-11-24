@@ -7,11 +7,11 @@
 @if (Model._login.IsLoggedIn() == true)
 {
     <h5>Products in cart:</h5>
-    @if (Model.thisCustomer.ProductsInCart.Count == 0)
+    @if (Model.thisCustomer.customerCart.ProductsInCart.Count == 0)
     {
         <h2>Empty</h2>
     }
-    foreach (var item in Model.thisCustomer.ProductsInCart)
+    foreach (var item in Model.thisCustomer.customerCart.ProductsInCart)
     {
         <div class="card-header">
             @item.ProductName

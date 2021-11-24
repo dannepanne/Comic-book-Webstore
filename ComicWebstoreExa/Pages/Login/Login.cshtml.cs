@@ -40,6 +40,7 @@ namespace ComicWebstoreExa.Pages.Login
 
                 //thisCustomer = _dataAccess.CustGetById(id, Customers);
                 _login.setCust(_dataAccess.CustGetById(ID));
+                
                 //Cart.Cart newCart = new Cart.Cart() { CustCartID = CustomerID }; skapa denna i webshoppen 
                 return RedirectToPage("/WebShop/WebShop", "WebShop"/*, new {ID}*/);
             }

@@ -20,16 +20,16 @@ namespace DataSource.Model
         public string Password { get; set; }
 
         [JsonPropertyName("reciepts")]
-        public List<Reciept> Reciepts = new();
+        public List<Reciept> Reciepts { get; set; }
 
         [JsonPropertyName("creditcard")]
         public CreditCard cCard { get; set; }
 
         
-        public List<ProductDTO> ProductsInCart = new List<ProductDTO>();
+        //public List<ProductDTO> ProductsInCart = new List<ProductDTO>();
 
-        [JsonPropertyName("cartlist")]
-        public List<Cart> CartList = new();
+        [JsonPropertyName("cart")]
+        public Cart customerCart { get; set; }
 
         public string FullName()
         {

@@ -16,12 +16,14 @@ namespace DataAccess
         public IEnumerable<ProductDTO> SortListProPrice();
 
         public IEnumerable<ProductDTO> SearchBarName(string search);
-        public Reciept ReturnReciept(CustomerDTO cust, Cart cart);
+        //public Reciept CreateReciept(CustomerDTO cust, Cart cart, CreditCard card);
         public CreditCard CreateCreditCard(CustomerDTO cust);
         public void UpdateCustomerList(CustomerDTO cust);
-        public int CreateCart(CustomerDTO cust, List<ProductDTO> prods);
+        public int CreateCartID(CustomerDTO cust);
         public void CustomerListSerialize(List<CustomerDTO> custlist);
         public int CalculateShipping(List<ProductDTO> prodlist);
-        public void CreateReciept(CustomerDTO cust, int id, List<ProductDTO> list, int total);
+        //public void CreateReciept(CustomerDTO cust, int id, List<ProductDTO> list, int total);
+        public Reciept ReturnReciept(CustomerDTO cust, int id, Cart cart, int total, CreditCard card);
+
     }
 }

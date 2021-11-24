@@ -9,10 +9,10 @@ namespace DataAccess
 {
     public class DataAccess : IDataAccess
     {
-        
+
         public List<ProductDTO> Products = new List<ProductDTO>();
         public List<CustomerDTO> Customers = new List<CustomerDTO>();
-       
+
         public IDataSource _dataSource { get; private set; }
 
         public DataAccess(IDataSource dataSource)
@@ -90,7 +90,7 @@ namespace DataAccess
         {
             var jsonResponse = _dataSource.ProductsDataProvider();
             IEnumerable<ProductDTO> products = JsonConvert.DeserializeObject<IEnumerable<ProductDTO>>(jsonResponse);
-            
+
             return products;
         }
 
@@ -99,7 +99,7 @@ namespace DataAccess
             int result = 0;
             foreach (var item in prodlist)
             {
-                if (item.ProductType == "physical")
+                if (item.ProductType == "Physical")
                 {
                     result += 49;
                 }
@@ -107,11 +107,11 @@ namespace DataAccess
             return result;
         }
 
-        
+
         public IEnumerable<ProductDTO> SortListProName()
         {
-           
-                return GetAllProducts().OrderBy(p => p.ProductName);
+
+            return GetAllProducts().OrderBy(p => p.ProductName);
 
 
         }
@@ -125,7 +125,7 @@ namespace DataAccess
         }
 
 
-                
+
         public IEnumerable<ProductDTO> SearchBarName(string search)
         {
             if (string.IsNullOrEmpty(search))
@@ -146,33 +146,33 @@ namespace DataAccess
         {
 
             var path = @"C:\Users\danne\source\repos\ComicWebstoreExa\DataSource\JSONData\CustomersJson.json";
-            var serializedUsers = JsonConvert.SerializeObject(custlist);
+            var serializedUsers = JsonConvert.SerializeObject(custlist, Formatting.Indented);
             File.WriteAllText(path, serializedUsers);
-            
+
         }
 
 
-        public int CreateCart(CustomerDTO cust, List<ProductDTO> prods)
+        public int CreateCartID(CustomerDTO cust)
         {
-            int cartid = cust.CustomerID + 1;            
-            Cart newcart = new();
-            newcart.ProductsInCart = prods;
-            foreach (var item in cust.CartList)
+            int cartid = cust.CustomerID + 1;
+
+            if ( cust.Reciepts.Count != 0)
             {
-                cartid =+ 1;
+                foreach (var item in cust.Reciepts)
+                {
+                    cartid = +1;
+                }
             }
-            newcart.CartID = cartid;
-            newcart.CustCartID = cust.CustomerID;
-            newcart.isPaid = false;
-            cust.CartList.Add(newcart);
-            return newcart.CartID;
+
+
+            return cartid;
         }
 
-        
+
 
         public void ShowCarts(CustomerDTO cust)
         {
-            
+
         }
 
         public CreditCard CreateCreditCard(CustomerDTO cust)
@@ -181,13 +181,13 @@ namespace DataAccess
             return cCard;
         }
 
-        public Reciept ReturnReciept(CustomerDTO cust, Cart cart)
-        {
-            Reciept reciept = new Reciept { RecieptCartID = cart.CartID, RecieptProducts = cart.ProductsInCart, RecieptSum = cart.CartSum() };
-            return reciept;
-        }
+        //public Reciept CreateReciept(CustomerDTO cust, Cart cart, CreditCard card)
+        //{
+        //    Reciept reciept = new Reciept() { RecieptCartID = cart.CartID, RecieptProducts = cart.ProductsInCart, RecieptSum = cart.CartSum(), isPaid = true, ccard = card };
+        //    return reciept;
+        //}
 
-        
+
 
         public void UpdateCustomerList(CustomerDTO cust)
         {
@@ -198,12 +198,12 @@ namespace DataAccess
                 if (cust.CustomerID == item.CustomerID)
                 {
                     var IndexOfUser = Customers.IndexOf(item);
-                    Customers[IndexOfUser]= cust;
+                    Customers[IndexOfUser] = cust;
 
                 }
             }
             CustomerListSerialize(Customers);
-            
+
             //var index = Customers.FindIndex(c => c.CustomerID == cust.CustomerID);
             //Customers[index] = cust;
         }
@@ -212,19 +212,19 @@ namespace DataAccess
 
 
 
-        public int IndexOfCart(CustomerDTO cust, int cartid)
+        //public int IndexOfCart(CustomerDTO cust, int cartid)
+        //{
+        //    var index = cust.CartList.FindIndex(c => c.CartID == cartid);
+        //    return index;
+        //}
+
+        public Reciept ReturnReciept(CustomerDTO cust, int id, Cart cart, int total, CreditCard card)
         {
-            var index = cust.CartList.FindIndex(c => c.CartID == cartid);
-            return index;
+
+            Reciept reciept = new Reciept() { RecieptCartID = cart.CartID, RecieptProducts = cart.ProductsInCart, RecieptSum = cart.CartSum(), isPaid = true, ccard = card };
+            return reciept;
+
         }
 
-        public void CreateReciept(CustomerDTO cust, int id, List<ProductDTO> list, int total)
-        {
-            
-            Reciept reciept = new Reciept(){ RecieptCartID = id, RecieptProducts = list, RecieptSum = total };
-            cust.Reciepts = new List<Reciept>();
-            cust.Reciepts.Add(reciept);
-        }
-        
     }
 }

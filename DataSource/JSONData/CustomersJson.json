@@ -4,61 +4,14 @@
     "LastName": "McFarlane",
     "CustomerID": 100,
     "Password": "spawn",
-    "Reciepts": [
-      {
-        "RecieptCartID": 100,
-        "RecieptProducts": [
-          {
-            "ProductName": "Spawn",
-            "ProductPrice": 300,
-            "ProductImage": "https://upload.wikimedia.org/wikipedia/en/a/ab/Spawn14myths1993.png",
-            "ProductID": 1004,
-            "ProductDescription": "DESCRIPTION",
-            "ProductType": "Physical",
-            "Weight": 0
-          },
-          {
-            "ProductName": "Prophet",
-            "ProductPrice": 1500,
-            "ProductImage": "https://upload.wikimedia.org/wikipedia/en/0/00/Prophet_21.jpeg",
-            "ProductID": 1010,
-            "ProductDescription": "DESCRIPTION",
-            "ProductType": "Physical",
-            "Weight": 0
-          },
-          {
-            "ProductName": "Groo",
-            "ProductPrice": 40,
-            "ProductImage": "https://upload.wikimedia.org/wikipedia/en/d/d5/Groo_cover_issue1.jpg",
-            "ProductID": 1003,
-            "ProductDescription": "DESCRIPTION",
-            "ProductType": "Physical",
-            "Weight": 0
-          }
-        ],
-        "RecieptSum": 1840,
-        "isPaid": true,
-        "ccard": {
-          "CardNumber": 30000,
-          "CardName": "Todd McFarlane"
-        }
-      }
-    ],
-    "cCard": {
-      "CardNumber": 30000,
-      "CardName": "Todd McFarlane"
-    },
-    "customerCart": {
-      "ProductsInCart": [],
-      "CartID": 100,
-      "CustCartID": 100,
-      "isPaid": false
-    }
+    "Reciepts": null,
+    "cCard": null,
+    "customerCart": null
   },
   {
     "FirstName": "Gary",
     "LastName": "Larson",
-    "CustomerID": 101,
+    "CustomerID": 201,
     "Password": "farside",
     "Reciepts": null,
     "cCard": null,
@@ -67,7 +20,7 @@
   {
     "FirstName": "Bill",
     "LastName": "Watterson",
-    "CustomerID": 102,
+    "CustomerID": 302,
     "Password": "calvinhobbes",
     "Reciepts": null,
     "cCard": null,
@@ -76,7 +29,7 @@
   {
     "FirstName": "Stan",
     "LastName": "Lee",
-    "CustomerID": 103,
+    "CustomerID": 403,
     "Password": "spiderman",
     "Reciepts": null,
     "cCard": null,
@@ -85,7 +38,7 @@
   {
     "FirstName": "Katsuhiro",
     "LastName": "Otomo",
-    "CustomerID": 104,
+    "CustomerID": 504,
     "Password": "akira",
     "Reciepts": null,
     "cCard": null,
@@ -94,7 +47,7 @@
   {
     "FirstName": "Sergio",
     "LastName": "Argones",
-    "CustomerID": 105,
+    "CustomerID": 605,
     "Password": "groo",
     "Reciepts": null,
     "cCard": null,

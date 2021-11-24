@@ -1,10 +1,10 @@
-[
+﻿[
   {
     "productname": "Akira",
     "productprice": 980,
     "productimage": "https://upload.wikimedia.org/wikipedia/en/7/70/Akira_Volume_1_Cover_Japanese_Version_%28Manga%29.jpg",
     "productid": 1001,
-    "productdescription": "DESCRIPTION",
+    "productdescription": "Set in a dystopian 2019, Akira tells the story of Shōtarō Kaneda, a leader of a biker gang whose childhood friend, Tetsuo Shima, acquires incredible telekinetic abilities after a motorcycle accident",
     "producttype": "Physical"
   },
   {
@@ -12,7 +12,7 @@
     "productprice": 50,
     "productimage": "https://upload.wikimedia.org/wikipedia/en/5/54/AmazingSpider-Man1.jpg",
     "productid": 1002,
-    "productdescription": "DESCRIPTION",
+    "productdescription": "Bitten by a radioactive spider, Peter Parker's arachnid abilities give him amazing powers he uses to help others, while his personal life continues to offer plenty of obstacles.",
     "producttype": "Physical"
   },
   {
@@ -20,7 +20,7 @@
     "productprice": 40,
     "productimage": "https://upload.wikimedia.org/wikipedia/en/d/d5/Groo_cover_issue1.jpg",
     "productid": 1003,
-    "productdescription": "DESCRIPTION",
+    "productdescription": "Groo (the epithet \"the Wanderer\" is informal and rarely mentioned within the stories) first appeared as a parody of the brutal sword and sorcery heroes who were popular at the time of his creation in the 1970s",
     "producttype": "Physical"
   },
   {
@@ -28,7 +28,7 @@
     "productprice": 300,
     "productimage": "https://upload.wikimedia.org/wikipedia/en/a/ab/Spawn14myths1993.png",
     "productid": 1004,
-    "productdescription": "DESCRIPTION",
+    "productdescription": "Spawn follows the afterlife of a man named Al Simmons. Al was a government secret military operative who was murdered. After death, he made a deal for his soul in order to return to Earth and be with his beloved wife Wanda once again.",
     "producttype": "Physical"
   },
   {
@@ -36,7 +36,7 @@
     "productprice": 250,
     "productimage": "https://budgrace.com/wp-content/uploads/2021/11/Front-cover-03-04-05b-1.jpg",
     "productid": 1005,
-    "productdescription": "DESCRIPTION",
+    "productdescription": "The Piranha Club is a society of freeloaders, hustlers and other shady characters who will do anything to make a quick buck.",
     "producttype": "Physical"
   },
   {
@@ -44,7 +44,7 @@
     "productprice": 700,
     "productimage": "https://upload.wikimedia.org/wikipedia/en/b/b2/Calvin_and_Hobbes_Original.png",
     "productid": 1006,
-    "productdescription": "DESCRIPTION",
+    "productdescription": "Calvin and Hobbes follows the humorous antics of the title characters: Calvin, a precocious, mischievous and adventurous six-year-old boy; and Hobbes, his sardonic stuffed tiger.",
     "producttype": "Digital"
   },
   {
@@ -52,7 +52,7 @@
     "productprice": 1300,
     "productimage": "https://upload.wikimedia.org/wikipedia/en/5/50/Wdogart.jpg",
     "productid": 1007,
-    "productdescription": "DESCRIPTION",
+    "productdescription": "A single page comic with a surrealistic humor often based on uncomfortable social situations, improbable events, an anthropomorphic view of the world, logical fallacies, impending bizarre disasters, (often twisted) references to proverbs, or the search for meaning in life.",
     "producttype": "Digital"
   },
   {
@@ -60,7 +60,7 @@
     "productprice": 650,
     "productimage": "https://upload.wikimedia.org/wikipedia/en/c/c3/NausicaaCoverTankobon1.png",
     "productid": 1008,
-    "productdescription": "DESCRIPTION",
+    "productdescription": "Far in the future, after an apocalyptic conflict has devastated much of the world's ecosystem, the few surviving humans live in scattered semi-hospitable environments within what has become a toxic jungle.",
     "producttype": "Physical"
   },
   {
@@ -68,7 +68,7 @@
     "productprice": 5200,
     "productimage": "https://upload.wikimedia.org/wikipedia/commons/b/b9/Batman_Comic_Book_-_NARA_-_595420.gif",
     "productid": 1009,
-    "productdescription": "DESCRIPTION",
+    "productdescription": "Having witnessed his parents' brutal murder as a child, millionaire philanthropist Bruce Wayne fights crime in Gotham City disguised as Batman, a costumed hero who strikes fear into the hearts of villains.",
     "producttype": "Digital"
   },
   {
@@ -76,7 +76,7 @@
     "productprice": 1500,
     "productimage": "https://upload.wikimedia.org/wikipedia/en/0/00/Prophet_21.jpeg",
     "productid": 1010,
-    "productdescription": "DESCRIPTION",
+    "productdescription": "In the distant future, a man awakens on an alien planet. Instinctively, he sets out on a mission, using his inherent warrior skills to face off with strange creatures and cultures. Then it happens again. And again.",
     "producttype": "Physical"
   }
 ]

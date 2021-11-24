@@ -54,7 +54,7 @@ namespace ComicWebstoreExa.Pages.Cart
             }
             else
             {
-                return RedirectToPage("/Error", "Error"/*, new {ID}*/);
+               RedirectToPage("/Error", "Error"/*, new {ID}*/);
             }
             
         }

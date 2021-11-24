@@ -33,22 +33,30 @@ namespace ComicWebstoreExa.Pages.Cart
 
         public void OnGet()
         {
-
-            thisCust = _loggedin.giveCust();
-            newReciept = _dataAccess.ReturnReciept(thisCust, _loggedin.GetCartID(), thisCust.customerCart, ProductsTotal() + _dataAccess.CalculateShipping(thisCust.customerCart.ProductsInCart), thisCust.cCard);
-            if (thisCust.Reciepts == null)
+            if (_loggedin.IsLoggedIn() == true && thisCust.cCard != null)
             {
-                thisCust.Reciepts = new List<Reciept>();
-                thisCust.Reciepts.Add(newReciept);
+                thisCust = _loggedin.giveCust();
+                newReciept = _dataAccess.ReturnReciept(thisCust, _loggedin.GetCartID(), thisCust.customerCart.ProductsInCart, ProductsTotal() + _dataAccess.CalculateShipping(thisCust.customerCart.ProductsInCart), thisCust.cCard);
+                if (thisCust.Reciepts == null)
+                {
+                    thisCust.Reciepts = new List<Reciept>();
+                    thisCust.Reciepts.Add(newReciept);
+                }
+                else
+                {
+                    newReciept.RecieptCartID += 1;
+                    thisCust.Reciepts.Add(newReciept);
+                }
+
+                _loggedin.resetCart();
+                _dataAccess.UpdateCustomerList(_loggedin.giveCust());
+                _dataAccess.CustomerListSerialize(_dataAccess.GetListCust());
             }
             else
             {
-                thisCust.Reciepts.Add(newReciept);
+                return RedirectToPage("/Error", "Error"/*, new {ID}*/);
             }
             
-            _loggedin.resetCart();
-            _dataAccess.UpdateCustomerList(_loggedin.giveCust());
-            _dataAccess.CustomerListSerialize(_dataAccess.GetListCust());
         }
 
         

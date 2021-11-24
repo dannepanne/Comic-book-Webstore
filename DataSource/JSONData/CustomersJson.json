@@ -7,18 +7,36 @@
     "Reciepts": [
       {
         "RecieptCartID": 100,
-        "RecieptProducts": [],
-        "RecieptSum": 1500,
-        "isPaid": true,
-        "ccard": {
-          "CardNumber": 30000,
-          "CardName": "Todd McFarlane"
-        }
-      },
-      {
-        "RecieptCartID": 100,
-        "RecieptProducts": [],
-        "RecieptSum": 1300,
+        "RecieptProducts": [
+          {
+            "ProductName": "Spawn",
+            "ProductPrice": 300,
+            "ProductImage": "https://upload.wikimedia.org/wikipedia/en/a/ab/Spawn14myths1993.png",
+            "ProductID": 1004,
+            "ProductDescription": "DESCRIPTION",
+            "ProductType": "Physical",
+            "Weight": 0
+          },
+          {
+            "ProductName": "Prophet",
+            "ProductPrice": 1500,
+            "ProductImage": "https://upload.wikimedia.org/wikipedia/en/0/00/Prophet_21.jpeg",
+            "ProductID": 1010,
+            "ProductDescription": "DESCRIPTION",
+            "ProductType": "Physical",
+            "Weight": 0
+          },
+          {
+            "ProductName": "Groo",
+            "ProductPrice": 40,
+            "ProductImage": "https://upload.wikimedia.org/wikipedia/en/d/d5/Groo_cover_issue1.jpg",
+            "ProductID": 1003,
+            "ProductDescription": "DESCRIPTION",
+            "ProductType": "Physical",
+            "Weight": 0
+          }
+        ],
+        "RecieptSum": 1840,
         "isPaid": true,
         "ccard": {
           "CardNumber": 30000,

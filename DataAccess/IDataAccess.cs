@@ -23,7 +23,7 @@ namespace DataAccess
         public void CustomerListSerialize(List<CustomerDTO> custlist);
         public int CalculateShipping(List<ProductDTO> prodlist);
         //public void CreateReciept(CustomerDTO cust, int id, List<ProductDTO> list, int total);
-        public Reciept ReturnReciept(CustomerDTO cust, int id, Cart cart, int total, CreditCard card);
+        public Reciept ReturnReciept(CustomerDTO cust, int id, List<ProductDTO> list, int total, CreditCard card);
 
     }
 }

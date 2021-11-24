@@ -20,35 +20,39 @@
     </div>
 
 
+    @if (Model.thisCustomer.Reciepts != null)
+    {
+        <div class="card-header">
+            <h2>  Previous orders:  </h2>
+        </div>
 
-    <div class="card-header">
-        <h2>  Previous orders:  </h2>
-    </div>
-
-    <div class="d-flex justify-content-center row">
-        @foreach (var item in Model.thisCustomer.Reciepts)
-        {
-
-            <div class="card" style="width: 300px !important;">
-
+        <div class="d-flex justify-content-center row">
+            @foreach (var item in Model.thisCustomer.Reciepts)
+            {
                 <div class="card-header">
-                    @item.RecieptCartID
-                </div>
-                <div class="card-body">
-                    @foreach (var reciept in item.RecieptProducts) //kommer inte upp
+                    RecieptID: @item.RecieptCartID
+                    total: @item.RecieptSum
+                    @foreach (var reciept in item.RecieptProducts)
                     {
-                        <div class="card-header">
-                            @reciept.ProductName
-                            @reciept.ProductPrice
+                        <div class="card" style="width: auto;">
 
+
+                            <div class="card-body">
+                                <h5 class="card-title">@reciept.ProductName</h5>
+
+                                <h6 class="card-title">@reciept.ProductPrice:-</h6>
+
+                                <p class="card-text">@reciept.ProductType</p>
+
+
+                            </div>
                         </div>
                     }
                 </div>
-                <p class="card-text">@item.RecieptSum</p>
-            </div>
+            }
+        </div>
+    }
 
-        }
-    </div>
 
 }
 else

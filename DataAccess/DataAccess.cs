@@ -46,21 +46,7 @@ namespace DataAccess
 
         public CustomerDTO CustGetById(int idwhere)
         {
-            //int index = 0;
-            //CustomerDTO result =  t in Customers where t.CustomerID = idwhere;//
-            //var result = (CustomerDTO)Customers.Where(s => s.CustomerID == idwhere);
-            //CustomerDTO result = Customers.FirstOrDefault(o => o.CustomerID == idwhere);
-            //return result;
-            //return ((CustomerDTO)(from i in Customers where i.CustomerID == idwhere select i));
-            //for (int i = 0; i < Customers.Count; i++)
-            //{
-            //    if (Customers[i].CustomerID == idwhere)
-            //    {
-            //        index = i;
-            //    }
-            //}
-            //return Customers[index];
-            //return result;
+            
             List<CustomerDTO> CustomerList = GetListCust();
             foreach (var item in CustomerList)
             {
@@ -73,7 +59,7 @@ namespace DataAccess
         }
         public ProductDTO ProdGetById(int idwhere)
         {
-            //ProductDTO result = (ProductDTO)Products.Where(s => s.ProductID == idwhere);
+            
             List<ProductDTO> ProductList = GetListProd();
             foreach (ProductDTO item in ProductList)
             {
@@ -181,11 +167,6 @@ namespace DataAccess
             return cCard;
         }
 
-        //public Reciept CreateReciept(CustomerDTO cust, Cart cart, CreditCard card)
-        //{
-        //    Reciept reciept = new Reciept() { RecieptCartID = cart.CartID, RecieptProducts = cart.ProductsInCart, RecieptSum = cart.CartSum(), isPaid = true, ccard = card };
-        //    return reciept;
-        //}
 
 
 
@@ -204,24 +185,14 @@ namespace DataAccess
             }
             CustomerListSerialize(Customers);
 
-            //var index = Customers.FindIndex(c => c.CustomerID == cust.CustomerID);
-            //Customers[index] = cust;
+            
         }
 
 
-
-
-
-        //public int IndexOfCart(CustomerDTO cust, int cartid)
-        //{
-        //    var index = cust.CartList.FindIndex(c => c.CartID == cartid);
-        //    return index;
-        //}
-
-        public Reciept ReturnReciept(CustomerDTO cust, int id, Cart cart, int total, CreditCard card)
+        public Reciept ReturnReciept(CustomerDTO cust, int id, List<ProductDTO> list, int total, CreditCard card)
         {
 
-            Reciept reciept = new Reciept() { RecieptCartID = cart.CartID, RecieptProducts = cart.ProductsInCart, RecieptSum = cart.CartSum(), isPaid = true, ccard = card };
+            Reciept reciept = new Reciept() { RecieptCartID = id, RecieptProducts = list.ToList(), RecieptSum = cust.customerCart.CartSum(), isPaid = true, ccard = card };
             return reciept;
 
         }

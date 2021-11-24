@@ -11,24 +11,24 @@ namespace DataSource.Model
     {
         [JsonPropertyName("firstname")]
         public string FirstName { get; set; }
-        [JsonPropertyName("lastname")]
+        [JsonPropertyName("LastName")]
         public string LastName { get; set; }
-        [JsonPropertyName("customerid")]
+        [JsonPropertyName("CustomerID")]
         public int CustomerID { get; set; }
 
-        [JsonPropertyName("password")]
+        [JsonPropertyName("Password")]
         public string Password { get; set; }
 
-        [JsonPropertyName("reciepts")]
+        [JsonPropertyName("Reciepts")]
         public List<Reciept> Reciepts { get; set; }
 
-        [JsonPropertyName("creditcard")]
+        [JsonPropertyName("cCard")]
         public CreditCard cCard { get; set; }
 
         
         //public List<ProductDTO> ProductsInCart = new List<ProductDTO>();
 
-        [JsonPropertyName("cart")]
+        [JsonPropertyName("customerCart")]
         public Cart customerCart { get; set; }
 
         public string FullName()

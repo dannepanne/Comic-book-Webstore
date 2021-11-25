@@ -15,36 +15,36 @@ namespace DataAccess
 
         public IDataSource _dataSource { get; private set; }
 
-        public DataAccess(IDataSource dataSource)
+        public DataAccess(IDataSource dataSource) //DI för DataSource för åtkomst till JSON 
         {
             _dataSource = dataSource;
         }
 
-        public List<ProductDTO> GetListProd()
+        public List<ProductDTO> GetListProd() //returnerar en List<ProductDTO> / lista på produkter
         {
             List<ProductDTO> prodlist = _dataSource.GetAllProducts().ToList(); ;
             return prodlist;
         }
 
-        public void AccessProducts() //onödig??
+        public void AccessProducts() //onödig, ej implementerad
         {
             Products = (List<ProductDTO>)_dataSource.GetAllProducts();
 
         }
 
-        public List<CustomerDTO> GetListCust()
+        public List<CustomerDTO> GetListCust() // returnerar en List<CustomerDTO> / lista på kunder
         {
             List<CustomerDTO> custlist = _dataSource.GetAllCustomers().ToList(); ;
             return custlist;
         }
 
 
-        public void AccessCustomers() //onödig?
+        public void AccessCustomers() //onödig, ej implementerad
         {
             Customers = (List<CustomerDTO>)_dataSource.GetAllCustomers();
         }
 
-        public CustomerDTO CustGetById(int idwhere)
+        public CustomerDTO CustGetById(int idwhere) // tar in en customer id int och returnerar en CustomerDTO / kund som har samma id som den int som skickats med metoden
         {
             
             List<CustomerDTO> CustomerList = GetListCust();
@@ -57,7 +57,7 @@ namespace DataAccess
             }
             return null;
         }
-        public ProductDTO ProdGetById(int idwhere)
+        public ProductDTO ProdGetById(int idwhere) // tar in en product id int och returnerar en ProductDTO / kund som har samma id som den int som skickats med metoden
         {
             
             List<ProductDTO> ProductList = GetListProd();
@@ -72,7 +72,7 @@ namespace DataAccess
 
         }
 
-        public IEnumerable<ProductDTO> GetAllProducts()
+        public IEnumerable<ProductDTO> GetAllProducts() //deserialiserar JSON från DataSource och returnerar en IEnumerable<ProductDTO>
         {
             var jsonResponse = _dataSource.ProductsDataProvider();
             IEnumerable<ProductDTO> products = JsonConvert.DeserializeObject<IEnumerable<ProductDTO>>(jsonResponse);
@@ -80,7 +80,7 @@ namespace DataAccess
             return products;
         }
 
-        public int CalculateShipping(List<ProductDTO> prodlist)
+        public int CalculateShipping(List<ProductDTO> prodlist) //Enkel metod för att räkna ut shipping beroende på typ av produkt, returnerar en int
         {
             int result = 0;
             foreach (var item in prodlist)
@@ -94,7 +94,7 @@ namespace DataAccess
         }
 
 
-        public IEnumerable<ProductDTO> SortListProName()
+        public IEnumerable<ProductDTO> SortListProName() //returnerar en sorterad IEnumerable<ProductDTO> sorterad per produktnamn
         {
 
             return GetAllProducts().OrderBy(p => p.ProductName);
@@ -103,7 +103,7 @@ namespace DataAccess
         }
 
 
-        public IEnumerable<ProductDTO> SortListProPrice()
+        public IEnumerable<ProductDTO> SortListProPrice() //returnerar en sorterad IEnumerable<ProductDTO> sorterad per produktpris
         {
 
             return GetAllProducts().OrderBy(p => p.ProductPrice);
@@ -112,7 +112,7 @@ namespace DataAccess
 
 
 
-        public IEnumerable<ProductDTO> SearchBarName(string search)
+        public IEnumerable<ProductDTO> SearchBarName(string search) //returnerar en  IEnumerable<ProductDTO> med ProductDTO:s som innehåller search string i product name
         {
             if (string.IsNullOrEmpty(search))
             {
@@ -135,7 +135,7 @@ namespace DataAccess
         }
 
 
-        public int CreateCartID(CustomerDTO cust)
+        public int CreateCartID(CustomerDTO cust) //skapar en Cart, ger den ett cartid som räknas på kund id samt antalet kvitton
         {
             int cartid = cust.CustomerID + 1;
 
@@ -153,7 +153,7 @@ namespace DataAccess
 
 
 
-        public CreditCard CreateCreditCard(CustomerDTO cust)
+        public CreditCard CreateCreditCard(CustomerDTO cust) //enkel metod som skapar ett CreditCard med nummer och namn på kortet
         {
             CreditCard cCard = new CreditCard { CardNumber = cust.CustomerID + cust.CustomerID + cust.CustomerID, CardName = cust.FullName() };
             return cCard;
@@ -162,7 +162,7 @@ namespace DataAccess
 
 
 
-        public void UpdateCustomerList(CustomerDTO cust)
+        public void UpdateCustomerList(CustomerDTO cust) //tar in en CustomerDTO och uppdaterar List<CustomerDTO>. cust ersätter den CustomerDTO i listan med samma id. Skriver sedan den uppdaterade listan till CustomerJSON.json
         {
             Customers = GetListCust().ToList();
 
@@ -181,7 +181,7 @@ namespace DataAccess
         }
 
 
-        public Reciept ReturnReciept(CustomerDTO cust, int id, List<ProductDTO> list, int total, CreditCard card)
+        public Reciept ReturnReciept(CustomerDTO cust, int id, List<ProductDTO> list, int total, CreditCard card) //skapar ett kvitto baserat på produktlista, customer id, creditcart, summa samt ger kvittot en ispaid = true status. returnerar kvittot
         {
 
             Reciept reciept = new Reciept() { RecieptCartID = id, RecieptProducts = list.ToList(), RecieptSum = cust.customerCart.CartSum(), isPaid = true, ccard = card };

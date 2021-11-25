@@ -41,7 +41,7 @@ namespace ComicWebstoreExa.Pages.WebShop
 
 
 
-        public IActionResult OnPostSearchName()
+        public IActionResult OnPostSearchName() //sökmetod, kallar på metod i DataAccess
         {
 
             ProductList = _dataAccess.SearchBarName(SearchTerm).ToList();
@@ -55,12 +55,12 @@ namespace ComicWebstoreExa.Pages.WebShop
             return _dataAccess.GetAllProducts().ToList();
         }
         
-        public IActionResult OnPostSortThisPrice()
+        public IActionResult OnPostSortThisPrice() //Kallar på metoden för att sortera på pris och sätter ProductList till den sorterade listan.
         {
             ProductList = _dataAccess.SortListProPrice().ToList();
             return Page();
         }
-        public IActionResult OnPostSortThisName()
+        public IActionResult OnPostSortThisName() //Kallar på metoden för att sortera på namn och sätter ProductList till den sorterade listan.
         {
             ProductList = _dataAccess.SortListProName().ToList();
             return Page();

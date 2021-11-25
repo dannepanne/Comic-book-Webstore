@@ -29,22 +29,22 @@ namespace ComicWebstoreExa.Pages.Cart
 
         public ILoggedIn LoggedIn { get; }
 
-        public void OnGet(/*List<ProductDTO> thisCartList*/)
+        public void OnGet()
         {
-            if (LoggedIn.IsLoggedIn() == true)
+            if (LoggedIn.IsLoggedIn() == true) //om det finns en inloggad kund så hämtas denna och sparas i CurrentCustomer
             {
                 CurrentCustomer = LoggedIn.giveCust();
             
             
                 if (CurrentCustomer.cCard == null)
                 {
-                    DataAccess.CreateCreditCard(CurrentCustomer);
+                    DataAccess.CreateCreditCard(CurrentCustomer); //har CurrentCustomer inget CreditCard så skapas ett här
                 }
                 
             }
             
         }
-        public int ProductsTotal()
+        public int ProductsTotal() //räknar ut totalsumman för varor i Cart
         {
             CurrentCustomer = LoggedIn.giveCust();
             int total = 0;
@@ -57,13 +57,13 @@ namespace ComicWebstoreExa.Pages.Cart
         }
 
 
-        public int ShippingTotal()
+        public int ShippingTotal() // räknar ut frakt på CurrentCustomer Cart
         {
             CurrentCustomer = LoggedIn.giveCust();
             int shiptot = DataAccess.CalculateShipping(CurrentCustomer.customerCart.ProductsInCart);
             return shiptot;
         }
-        public void OnPostRemoveItem() 
+        public void OnPostRemoveItem() //tar bort en vara ur CurrentCustomer Cart
         {
             LoggedIn.RemoveItemAt(itemID);
             CurrentCustomer = LoggedIn.giveCust();

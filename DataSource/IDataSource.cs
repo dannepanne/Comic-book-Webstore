@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace DataSource
 {
-    public interface IDataSource
+    public interface IDataSource //interface för DataSource
     {
 
         public IEnumerable<ProductDTO> GetAllProducts();

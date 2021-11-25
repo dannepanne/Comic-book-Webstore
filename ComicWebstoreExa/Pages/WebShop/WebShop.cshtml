@@ -2,7 +2,7 @@
 @model ComicWebstoreExa.Pages.WebShop.WebShopModel
 @{
 }
-
+<div style="font-family: Comic Sans MS"><h1>  @Model.anerror  </h1></div>
 <h2>  Hello @Model.FirstName  </h2>
 @if (Model._login.IsLoggedIn() == true)
 {
@@ -18,31 +18,32 @@
 
         </div>
     }
-    
+
 }
 
+
 <form asp-page-handler="SearchName">
-    
+
     <div class="form-group">
         <div class="input-group">
 
-                <input type="search" class="form-control" asp-for="@Model.SearchTerm" />
-                <span class="input-grpup-btn">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search for something</button>
-                </span>
+            <input type="search" class="form-control" asp-for="@Model.SearchTerm" />
+            <span class="input-grpup-btn">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search for something</button>
+            </span>
 
         </div>
     </div>
 </form>
 <div class="container-fluid">
     <form asp-for="/WebShop" asp-page-handler="SortThisName">
-        <input type="hidden"  value="Name" />
+        <input type="hidden" value="Name" />
         <button type="submit">Sort by name</button>
-        </form>
-        <form asp-for="/WebShop" asp-page-handler="SortThisPrice">
-            <input type="hidden"  value="Price" />
-            <button type="submit">Sort by price</button>
-        </form>
+    </form>
+    <form asp-for="/WebShop" asp-page-handler="SortThisPrice">
+        <input type="hidden" value="Price" />
+        <button type="submit">Sort by price</button>
+    </form>
 </div>
 
 

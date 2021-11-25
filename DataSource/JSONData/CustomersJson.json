@@ -4,9 +4,38 @@
     "LastName": "McFarlane",
     "CustomerID": 100,
     "Password": "spawn",
-    "Reciepts": null,
-    "cCard": null,
-    "customerCart": null
+    "Reciepts": [
+      {
+        "RecieptCartID": 100,
+        "RecieptProducts": [
+          {
+            "ProductName": "Akira",
+            "ProductPrice": 980,
+            "ProductImage": "https://upload.wikimedia.org/wikipedia/en/7/70/Akira_Volume_1_Cover_Japanese_Version_%28Manga%29.jpg",
+            "ProductID": 1001,
+            "ProductDescription": "Set in a dystopian 2019, Akira tells the story of Shōtarō Kaneda, a leader of a biker gang whose childhood friend, Tetsuo Shima, acquires incredible telekinetic abilities after a motorcycle accident",
+            "ProductType": "Physical",
+            "Weight": 0
+          }
+        ],
+        "RecieptSum": 980,
+        "isPaid": true,
+        "ccard": {
+          "CardNumber": 30000,
+          "CardName": "Todd McFarlane"
+        }
+      }
+    ],
+    "cCard": {
+      "CardNumber": 30000,
+      "CardName": "Todd McFarlane"
+    },
+    "customerCart": {
+      "ProductsInCart": [],
+      "CartID": 100,
+      "CustCartID": 100,
+      "isPaid": false
+    }
   },
   {
     "FirstName": "Gary",

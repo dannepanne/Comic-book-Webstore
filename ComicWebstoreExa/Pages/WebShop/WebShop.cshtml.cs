@@ -24,6 +24,8 @@ namespace ComicWebstoreExa.Pages.WebShop
         public ILoggedIn _login { get; }
         public IDataAccess _dataAccess { get; }
         public string FirstName { get; set; }
+        [BindProperty]
+        public string anerror { get; set; }
 
         public WebShopModel(IDataAccess dataAccess, ILoggedIn login)
         {
@@ -78,7 +80,7 @@ namespace ComicWebstoreExa.Pages.WebShop
 
             if (_login.IsLoggedIn() == true)
             {
-                
+                anerror = "";
                 CustomerID = thisCustomer.CustomerID;
                 FirstName = thisCustomer.FirstName;
                 if (thisCustomer.cCard == null)
@@ -106,11 +108,24 @@ namespace ComicWebstoreExa.Pages.WebShop
 
         public void OnPostPutInCart()
         {
-            ProductList = _dataAccess.GetListProd();
-            thisCustomer = SetCustomer();
-            ProductDTO result = _dataAccess.ProdGetById(ProductID);
+            if (_login.IsLoggedIn() == true)
+            {
+                ProductList = _dataAccess.GetListProd();
+                thisCustomer = SetCustomer();
+                ProductDTO result = _dataAccess.ProdGetById(ProductID);
 
-            thisCustomer.customerCart.ProductsInCart.Add(result);
+                thisCustomer.customerCart.ProductsInCart.Add(result);
+            }
+            else if (true)
+            {
+                anerror = "Can´t buy stuff if you´re not logged in";
+                ProductList = _dataAccess.GetListProd();
+                thisCustomer = SetCustomer();
+                ProductDTO result = _dataAccess.ProdGetById(ProductID);
+                FirstName = "Nobody";
+            }
+
+            
 
 
         }

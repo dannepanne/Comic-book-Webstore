@@ -33,7 +33,7 @@ namespace ComicWebstoreExa.Pages.Cart
 
         public void OnGet()
         {
-            if (_loggedin.IsLoggedIn() == true && thisCust.cCard != null)
+            if (_loggedin.IsLoggedIn() == true)
             {
                 thisCust = _loggedin.giveCust();
                 newReciept = _dataAccess.ReturnReciept(thisCust, _loggedin.GetCartID(), thisCust.customerCart.ProductsInCart, ProductsTotal() + _dataAccess.CalculateShipping(thisCust.customerCart.ProductsInCart), thisCust.cCard);

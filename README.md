@@ -1,5 +1,5 @@
 # ComicWebstoreExa
-README förComicWebStoreEXA
+README för ComicWebstoreExa
 
 Grundläggande Webshop
 Det går att se varor utan att logga in men om man försöker gå till Customer eller

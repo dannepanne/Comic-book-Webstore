@@ -1,0 +1,80 @@
+﻿@page
+@model ComicWebstoreExa.Pages.WebShop.WebShopModel
+@{
+}
+<div style="font-family: Comic Sans MS"><h1>  @Model.anerror  </h1></div>
+<h2>  Hello @Model.FirstName  </h2>
+@if (Model._login.IsLoggedIn() == true)
+{
+    <h5>Products in cart:</h5>
+    @if (Model.thisCustomer.customerCart.ProductsInCart.Count == 0)
+    {
+        <h2>Empty</h2>
+    }
+    foreach (var item in Model.thisCustomer.customerCart.ProductsInCart)
+    {
+        <div class="card-header">
+            @item.ProductName
+
+        </div>
+    }
+
+}
+
+
+<form asp-page-handler="SearchName">
+
+    <div class="form-group">
+        <div class="input-group">
+
+            <input type="search" class="form-control" asp-for="@Model.SearchTerm" />
+            <span class="input-grpup-btn">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search for something</button>
+            </span>
+
+        </div>
+    </div>
+</form>
+<div class="container-fluid">
+    <form asp-for="/WebShop" asp-page-handler="SortThisName">
+        <input type="hidden" value="Name" />
+        <button type="submit">Sort by name</button>
+    </form>
+    <form asp-for="/WebShop" asp-page-handler="SortThisPrice">
+        <input type="hidden" value="Price" />
+        <button type="submit">Sort by price</button>
+    </form>
+</div>
+
+
+
+
+<div class="d-flex justify-content-center row">
+    @foreach (var item in Model.ProductList)
+    {
+
+        <div class="card" style="width: 300px !important;">
+
+            <img class="card-img-top" src="@item.ProductImage" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">@item.ProductName</h5>
+
+                <h6 class="card-title">@item.ProductPrice:-</h6>
+
+                <p class="card-text">@item.ProductDescription</p>
+                <a href="#" class="card-link">Add to cart</a>
+                <form asp-page-handler="PutInCart">
+
+                    <input type="hidden" asp-for="ProductID" value="@item.ProductID" />
+                    <button type="submit">Add to cart @item.ProductName</button>
+                </form>
+            </div>
+        </div>
+
+    }
+</div>
+
+
+
+
+

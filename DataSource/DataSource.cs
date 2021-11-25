@@ -12,21 +12,36 @@ namespace DataSource
 {
     public class DataSource : IDataSource
     {
-        public IEnumerable GetAllProducts()
+        public IEnumerable<ProductDTO> GetAllProducts()
         {
-            var path = @"C:\Users\danne\source\repos\ExaWebStore.UI\ExaWebStore.DataSource\JsonData\ProductJson.json";
-            var json = File.ReadAllText(path);
-            var addProducts = JsonConvert.DeserializeObject<List<ProductDTO>>(json);
+            //var path = Path.GetDirectoryName("ProductsJson.json");
+            var pathp = @"C:\Users\danne\source\repos\ComicWebstoreExa\DataSource\JSONData\ProductsJson.json";
+            var jsonp = File.ReadAllText(pathp);
+            var addProducts = JsonConvert.DeserializeObject<IEnumerable<ProductDTO>>(jsonp);
             return addProducts;
 
         }
 
-        public IEnumerable GetAllCustomers()
+        public IEnumerable<CustomerDTO> GetAllCustomers()
         {
-            var path = @"C:\Users\danne\source\repos\ExaWebStore.UI\ExaWebStore.DataSource\JsonData\CustomerJson.json";
+            //var path = Path.GetDirectoryName("CustomerJson.json");
+            var path = @"C:\Users\danne\source\repos\ComicWebstoreExa\DataSource\JSONData\CustomersJson.json";
             var json = File.ReadAllText(path);
-            var addCustomers = JsonConvert.DeserializeObject<List<CustomerDTO>>(json);
+            var addCustomers = JsonConvert.DeserializeObject<IEnumerable<CustomerDTO>>(json);
             return addCustomers;
+        }
+
+        public string CustomersDataProvider()
+        {
+            var jsonRepsonse = File.ReadAllText(@"C:\Users\danne\source\repos\ComicWebstoreExa\DataSource\JSONData\CustomersJson.json");
+
+            return jsonRepsonse;
+        }
+        public string ProductsDataProvider()
+        {
+            var jsonRepsonse = File.ReadAllText(@"C:\Users\danne\source\repos\ComicWebstoreExa\DataSource\JSONData\ProductsJson.json");
+
+            return jsonRepsonse;
         }
     }
 }

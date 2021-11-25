@@ -9,28 +9,36 @@ namespace DataSource.Model
 {
     public class ProductDTO
     {
-        [JsonPropertyName("prodname")]
+        
+        [JsonPropertyName("productname")]
         public string ProductName { get; set; }
 
-        [JsonPropertyName("prodprice")]
+        [JsonPropertyName("productprice")]
         public int ProductPrice { get; set; }
 
-        [JsonPropertyName("prodimage")]
+        [JsonPropertyName("productimage")]
         public string ProductImage { get; set; }
 
-        [JsonPropertyName("prodid")]
+        [JsonPropertyName("productid")]
         public int ProductID { get; set; }
 
-        [JsonPropertyName("proddesc")]
+        [JsonPropertyName("productdescription")]
         public string ProductDescription { get; set; }
 
+        [JsonPropertyName("producttype")]
+        public string ProductType { get; set; }
+
+        public int Weight { get; set; }
+
     }
-    public class DigitalProduct : ProductDTO
+    public class ProductDigitalDTO : ProductDTO
+    {
+
+        new public int Weight = 0;
+    }
+    public class ProductPhysicalDTO : ProductDTO
     {
 
     }
-    public class PhysicalProduct : ProductDTO
-    {
-
-    }
+  
 }

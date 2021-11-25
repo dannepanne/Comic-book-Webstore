@@ -27,7 +27,8 @@ namespace ComicWebstoreExa
         {
             services.AddRazorPages();
             services.AddSingleton<IDataSource, DataSource.DataSource>(); //Funkar
-            services.AddSingleton<IDataAccess, DataAccess.DataAccess>();
+            services.AddSingleton<IDataAccess, DataAccess.DataAccess>();            
+            services.AddSingleton<ILoggedIn, LoggedIn>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,0 +1,34 @@
+﻿@page
+@model ComicWebstoreExa.Pages.Login.LoginModel
+@{
+}
+<div>
+    <h2>  @Model.wrong  </h2>
+    <h3>  Choose Customer:  </h3>
+
+</div>
+
+
+@foreach (var item in Model.Customers)
+{
+    <div class="card text-center">
+        <div class="card-header">
+            @item.FirstName @item.LastName
+        </div>
+        <div class="card-body">
+            <form asp-page-handler="Login">
+                <input type="hidden" asp-for="ID" value="@item.CustomerID" />
+                <h3>    Password: </h3>
+                <input asp-for="password"/>
+                <button type="submit">Login @item.FirstName</button>
+            </form>
+        </div>
+
+    </div>
+
+}
+
+
+
+
+

@@ -120,13 +120,10 @@ namespace DataAccess
             }
             else
             {
-                return GetAllProducts().Where(p => p.ProductName.Contains(search));
+                return GetAllProducts().Where(p => p.ProductName.ToLower().Contains(search.ToLower()));
             }
         }
 
-
-
-        //JSON SERIALIZE CUSTOMER
 
         public void CustomerListSerialize(List<CustomerDTO> custlist)
         {
@@ -155,11 +152,6 @@ namespace DataAccess
         }
 
 
-
-        public void ShowCarts(CustomerDTO cust)
-        {
-
-        }
 
         public CreditCard CreateCreditCard(CustomerDTO cust)
         {

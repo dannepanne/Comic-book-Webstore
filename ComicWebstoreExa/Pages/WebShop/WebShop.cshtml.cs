@@ -115,6 +115,8 @@ namespace ComicWebstoreExa.Pages.WebShop
                 ProductDTO result = _dataAccess.ProdGetById(ProductID);
 
                 thisCustomer.customerCart.ProductsInCart.Add(result);
+                _dataAccess.UpdateCustomerList(_login.giveCust());
+                _dataAccess.CustomerListSerialize(_dataAccess.GetListCust());
             }
             else if (true)
             {

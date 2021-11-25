@@ -69,9 +69,38 @@
     "LastName": "Otomo",
     "CustomerID": 504,
     "Password": "akira",
-    "Reciepts": null,
-    "cCard": null,
-    "customerCart": null
+    "Reciepts": [
+      {
+        "RecieptCartID": 504,
+        "RecieptProducts": [
+          {
+            "ProductName": "Nausicaa",
+            "ProductPrice": 650,
+            "ProductImage": "https://upload.wikimedia.org/wikipedia/en/c/c3/NausicaaCoverTankobon1.png",
+            "ProductID": 1008,
+            "ProductDescription": "Far in the future, after an apocalyptic conflict has devastated much of the world's ecosystem, the few surviving humans live in scattered semi-hospitable environments within what has become a toxic jungle.",
+            "ProductType": "Physical",
+            "Weight": 0
+          }
+        ],
+        "RecieptSum": 650,
+        "isPaid": true,
+        "ccard": {
+          "CardNumber": 151200,
+          "CardName": "Katsuhiro Otomo"
+        }
+      }
+    ],
+    "cCard": {
+      "CardNumber": 151200,
+      "CardName": "Katsuhiro Otomo"
+    },
+    "customerCart": {
+      "ProductsInCart": [],
+      "CartID": 504,
+      "CustCartID": 504,
+      "isPaid": false
+    }
   },
   {
     "FirstName": "Sergio",

@@ -34,8 +34,8 @@ namespace ComicWebstoreExa.Pages.Cart
             if (LoggedIn.IsLoggedIn() == true) //om det finns en inloggad kund så hämtas denna och sparas i CurrentCustomer
             {
                 CurrentCustomer = LoggedIn.giveCust();
-            
-            
+                
+
                 if (CurrentCustomer.cCard == null)
                 {
                     DataAccess.CreateCreditCard(CurrentCustomer); //har CurrentCustomer inget CreditCard så skapas ett här
@@ -67,7 +67,9 @@ namespace ComicWebstoreExa.Pages.Cart
         {
             LoggedIn.RemoveItemAt(itemID);
             CurrentCustomer = LoggedIn.giveCust();
-           
+            DataAccess.UpdateCustomerList(LoggedIn.giveCust());
+            DataAccess.CustomerListSerialize(DataAccess.GetListCust());
+
         }
     }
 }

@@ -12,7 +12,7 @@ namespace DataSource
 {
     public class DataSource : IDataSource
     {
-        public IEnumerable<ProductDTO> GetAllProducts()
+        public IEnumerable<ProductDTO> GetAllProducts() //returnerar IEnumerable<ProductDTO> som är deserialized från ProductsJson.json
         {
             //var path = Path.GetDirectoryName("ProductsJson.json");
             var pathp = @"C:\Users\danne\source\repos\ComicWebstoreExa\DataSource\JSONData\ProductsJson.json";
@@ -22,7 +22,7 @@ namespace DataSource
 
         }
 
-        public IEnumerable<CustomerDTO> GetAllCustomers()
+        public IEnumerable<CustomerDTO> GetAllCustomers() //returnerar IEnumerable<CustomerDTO> som är deserialized från CustomersJson.json
         {
             //var path = Path.GetDirectoryName("CustomerJson.json");
             var path = @"C:\Users\danne\source\repos\ComicWebstoreExa\DataSource\JSONData\CustomersJson.json";
@@ -31,13 +31,13 @@ namespace DataSource
             return addCustomers;
         }
 
-        public string CustomersDataProvider()
+        public string CustomersDataProvider() //Returnerar CustomersJson.json path
         {
             var jsonRepsonse = File.ReadAllText(@"C:\Users\danne\source\repos\ComicWebstoreExa\DataSource\JSONData\CustomersJson.json");
 
             return jsonRepsonse;
         }
-        public string ProductsDataProvider()
+        public string ProductsDataProvider() //returnerar ProductsJson.json path
         {
             var jsonRepsonse = File.ReadAllText(@"C:\Users\danne\source\repos\ComicWebstoreExa\DataSource\JSONData\ProductsJson.json");
 

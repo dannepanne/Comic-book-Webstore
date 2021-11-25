@@ -21,7 +21,7 @@ namespace ComicWebstoreExa.Pages.Cart
         public IDataAccess _dataAccess { get; }
         public ILoggedIn _loggedin { get; }
 
-        public int ProductsTotal()
+        public int ProductsTotal() //räknar ut total summa för produkter i Cart. Egentligen överflödig skulle kunna ligga i annan klass då metoden finns på Cart sidan också
         {
             int total = 0;
             foreach (var item in thisCust.customerCart.ProductsInCart)
@@ -33,7 +33,7 @@ namespace ComicWebstoreExa.Pages.Cart
 
         public void OnGet()
         {
-            if (_loggedin.IsLoggedIn() == true)
+            if (_loggedin.IsLoggedIn() == true) //om customer är inloggad skapas kvitto för ordern och ges till customer reciept listan. felhantering för om Reciept lista finns eller ej. Nollställer Cart 
             {
                 thisCust = _loggedin.giveCust();
                 newReciept = _dataAccess.ReturnReciept(thisCust, _loggedin.GetCartID(), thisCust.customerCart.ProductsInCart, ProductsTotal() + _dataAccess.CalculateShipping(thisCust.customerCart.ProductsInCart), thisCust.cCard);

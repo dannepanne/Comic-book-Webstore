@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace ComicWebstoreExa.Pages.Login
 {
-    public class CustomerModel : PageModel
+    public class CustomerModel : PageModel //hämtar kund. Fronend delen visar tidigare orders/kvitton samt kundinfo
     {
         public CustomerDTO thisCustomer { get; set; }
         public ILoggedIn _login { get; private set; }

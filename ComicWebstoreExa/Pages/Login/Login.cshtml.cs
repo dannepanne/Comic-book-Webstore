@@ -32,7 +32,7 @@ namespace ComicWebstoreExa.Pages.Login
             Customers = _dataAccess.GetListCust();
         }
         public CustomerDTO thisCust { get; set; }
-        public IActionResult OnPostLogin()
+        public IActionResult OnPostLogin() //loggar in vald customer om lösenordet är rätt, sparar den customern till LoggedIn klassen så att den kan hämtas senare
         {
             thisCust = _dataAccess.CustGetById(ID);
             if (ModelState.IsValid && password == thisCust.Password)
@@ -46,7 +46,7 @@ namespace ComicWebstoreExa.Pages.Login
             }
             else
             {
-                wrong = "Wrong password, try again!";
+                wrong = "Wrong password, try again!"; //ger felmeddelande om fel lösenord
             }
             return Page();
         }

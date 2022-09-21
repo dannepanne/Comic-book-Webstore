@@ -1,17 +1,16 @@
 # ComicWebstoreExa
 README för ComicWebstoreExa
 
-Grundläggande Webshop
-Det går att se varor utan att logga in men om man försöker gå till Customer eller
-Cart så kommer man att få ett felmeddelande.
-Efter inloggning kan varor läggas i kundvagnen, går kunden till Cart ser man totalsumman
-på varor och frakt (frakten räknas på 49kr i fast kostnad per fysisk vara och 0 kronor per digital vara).
-Väljer man att genomföra köpet kontrolleras att kreditkort finns kopplat till kunden 
-och om detta finns sparas ett kvitto med kvittonummer och information om ordern sparas till kunden.
-Kunden kan gå till Customersidan för att se kunduppgifter samt tidigare genomförda ordrar.
 
 
-För att använda Webshoppen finns följande användare färdiga som mockadata:
+Simple web shop
+You can put items in the cart without logging in but if you try to go to the customer page or the cart you will get an error message.
+When logged din you can put items in the cart, the cart will update with sum total + shipping (calculated as SEK49 for physical goods and SEK0 for digital).
+Upon checkout a payment method (credit card) must exist for the logged in customer and if it goes through a reciept with information on the order plus payment details will be saved to the customer. The customer page displays previous orders and customers info.
+
+There are no cookies and to make it all work I built a separate class to save which customer is logged in and cart info to easily move that infom between pages (I write this ReadMe about a year later and I realize that it´s not the best solution but it works in this context).
+
+To use the webshop there are the following mock data users:
 
 Todd McFarlane 
 password: spawn
@@ -37,9 +36,9 @@ Sergio Argones
 password: groo
 customer id: 605
 
-*Backup CustomersJson.json finns under DataSource/JSONData/backup
+*Backup CustomersJson.json is under DataSource/JSONData/backup
 
-*JSON path måste uppdateras på följande ställen:
+*JSON path must be manually updated in the follosing places:
 
 	-DataAccess.DataAccess rad 134
 

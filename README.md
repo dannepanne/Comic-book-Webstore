@@ -1,7 +1,7 @@
 # ComicWebstoreExa
 README för ComicWebstoreExa
 
-
+NOTE: This runs on .NET 5.0! I plan to update it for 6.0 sometime. Probably.
 
 Simple web shop
 You can put items in the cart without logging in but if you try to go to the customer page or the cart you will get an error message.
